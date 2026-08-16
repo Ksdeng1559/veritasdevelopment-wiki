@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veritas Development Group — Reputation &amp; Market Intelligence | 2026-08-14</title>
+<style>
+  :root {
+    --navy: #0f2a4a;
+    --navy-dark: #0a1e36;
+    --gold: #c9a227;
+    --gold-light: #e8c96a;
+    --ink: #1c2733;
+    --muted: #5b6b7c;
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --line: #dde3ea;
+    --green: #1e7d4f;
+    --red: #b3382c;
+    --amber: #b07d10;
+    --blue: #1d5fa8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 60px; }
+
+  /* Header */
+  header {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, #16395f 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::after {
+    content: "";
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,162,39,0.25) 0%, transparent 70%);
+  }
+  .kicker {
+    font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold-light); font-weight: 600; margin-bottom: 8px;
+  }
+  h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #c3d0e0; font-size: 14px; }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px;
+  }
+  .meta span {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 4px 12px; border-radius: 999px;
+    font-size: 12px; color: #e6edf5;
+  }
+
+  /* Summary cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 18px 20px; box-shadow: 0 1px 3px rgba(15,42,74,0.06);
+  }
+  .card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); font-weight: 600; }
+  .card .value { font-size: 22px; font-weight: 700; margin-top: 6px; }
+  .card .note { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .pos { color: var(--green); } .neg { color: var(--red); } .neu { color: var(--muted); } .warn { color: var(--amber); }
+
+  /* Sections */
+  section {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 24px 28px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(15,42,74,0.06);
+  }
+  h2 {
+    font-size: 17px; font-weight: 700; color: var(--navy);
+    display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    padding-bottom: 10px; border-bottom: 2px solid var(--gold);
+  }
+  h2 .ico { font-size: 18px; }
+  h3 { font-size: 14px; font-weight: 600; color: var(--ink); margin: 14px 0 6px; }
+  p, li { font-size: 14px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 5px; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    padding: 2px 10px; border-radius: 999px; margin-right: 6px; vertical-align: 1px;
+  }
+  .tag.high { background: #fdecea; color: var(--red); }
+  .tag.med  { background: #fdf3e0; color: var(--amber); }
+  .tag.low  { background: #e8f4ee; color: var(--green); }
+  .tag.neu  { background: #eef1f5; color: var(--muted); }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  th {
+    text-align: left; background: var(--navy); color: #fff;
+    padding: 8px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  .sent { font-weight: 600; font-size: 12px; white-space: nowrap; }
+
+  /* Callout */
+  .callout {
+    background: #fdf6e3; border-left: 4px solid var(--gold);
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; font-size: 13.5px;
+  }
+  .callout.blue { background: #eaf2fb; border-left-color: var(--blue); }
+
+  footer {
+    text-align: center; color: var(--muted); font-size: 12px; margin-top: 28px;
+  }
+  footer .brand { color: var(--navy); font-weight: 700; letter-spacing: 1px; }
+
+  @media (max-width: 760px) {
+    .cards { grid-template-columns: 1fr 1fr; }
+    section { padding: 18px 16px; }
+    header { padding: 24px 20px; }
+    h1 { font-size: 21px; }
+  }
+  @media print {
+    body { background: #fff; }
+    .wrap { max-width: 100%; padding: 0; }
+    section, header, .card { box-shadow: none; break-inside: avoid; }
+    header { border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Reputation &amp; Market Intelligence</div>
+    <h1>Veritas Development Group</h1>
+    <div class="sub">Company + competitor sentiment · review intelligence · risk alerts · opportunity detection</div>
+    <div class="meta">
+      <span>📅 2026-08-14</span>
+      <span>🏷 Baseline (run 1)</span>
+      <span>🔎 6 mentions · 4 channels</span>
+      <span>📍 Lee's Summit / Kansas City, MO</span>
+    </div>
+  </header>
+
+  <div class="cards">
+    <div class="card">
+      <div class="label">Overall Sentiment</div>
+      <div class="value neu">Neutral</div>
+      <div class="note">No direct customer/community sentiment indexed yet</div>
+    </div>
+    <div class="card">
+      <div class="label">7-Day Trend</div>
+      <div class="value neu">N/A</div>
+      <div class="note">Baseline — trend appears from run 2</div>
+    </div>
+    <div class="card">
+      <div class="label">Reputation Risk</div>
+      <div class="value warn">HIGH</div>
+      <div class="note">Name-collision exposure + zero digital footprint</div>
+    </div>
+    <div class="card">
+      <div class="label">Market Signals</div>
+      <div class="value pos">3 found</div>
+      <div class="note">Prime parcel listed · LS momentum · new-home demand</div>
+    </div>
+  </div>
+
+  <section>
+    <h2><span class="ico">⚠️</span> Reputation Risk</h2>
+    <p><span class="tag high">HIGH</span><strong>Name-collision exposure.</strong> "Veritas" is a common name in real estate — at least 6 unrelated firms surface in searches:</p>
+    <ul>
+      <li><strong>Veritas Realty</strong> (veritasrealty.com) — retail/restaurant/medical CRE</li>
+      <li><strong>Veritas Developers Group</strong> (veritasdevelopers.com) — luxury residences</li>
+      <li><strong>Veritas Group LLC</strong> (veritas.group) — multifamily/self-storage investment</li>
+      <li><strong>Veritas Realty Investment Group</strong> (veritasri.com) — opportunistic RE</li>
+      <li><strong>Veritas Realty Group</strong> (veritasrealtygroup.com) — MS broker</li>
+      <li><strong>Veritas Limited</strong> (veritaslimited.com) — integrated RE group</li>
+      <li><strong>Veritas Development Group</strong> (LinkedIn) — <em>South Carolina</em> company, same name</li>
+    </ul>
+    <div class="callout"><strong>Implication:</strong> negative press or reviews about <em>any</em> of these firms can be misattributed to Veritas Development Group LLC. Monitoring must disambiguate by geography (Lee's Summit / KC MO) + principal (David Poole) + project names.</div>
+    <p><span class="tag med">MEDIUM</span><strong>Low digital footprint.</strong> No direct mentions, reviews, or press found for the LLC. This is a reputation <em>blind spot</em> — no presence to monitor, and no positive signals to leverage.</p>
+  </section>
+
+  <section>
+    <h2><span class="ico">💬</span> Customer Sentiment</h2>
+    <ul>
+      <li><strong>Positive themes:</strong> none found (no reviews/testimonials indexed)</li>
+      <li><strong>Negative themes:</strong> none found</li>
+      <li><strong>Note:</strong> no Google / BBB / Yelp review presence detected for the LLC. Recommend seeding review infrastructure.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="ico">📡</span> Competitor &amp; Market Signals</h2>
+    <h3>Prime Lee's Summit — land listing (direct project signal)</h3>
+    <p><span class="tag neu">MARKET</span><strong>"Prime Lee's Summit Development Ground"</strong> — Block &amp; Co listing:</p>
+    <ul>
+      <li>19.05 acres · <strong>$3,500,000</strong> · 291 Highway, Lee's Summit, MO</li>
+      <li>All utilities to site · visibility to <strong>33,400 cars/day</strong></li>
+      <li>Near several approved new commercial and residential developments</li>
+      <li>Listed by Bob Jaekel / Garrett Cohoon (Block &amp; Company)</li>
+    </ul>
+    <h3>Market context</h3>
+    <ul>
+      <li><strong>Lee's Summit new-construction momentum:</strong> City publishes monthly "Development Minute" videos (June 2026: new construction across eastern Lee's Summit); major developments taking shape</li>
+      <li><strong>Strong absorption:</strong> 171 homes sold in the past month · 174 new-construction communities · "one of the most livable" communities (NewHomeSource)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="ico">📈</span> Market Opportunities</h2>
+    <ul>
+      <li><span class="tag low">OPPORTUNITY</span><strong>Development momentum:</strong> favorable entitlement/development environment supports the project narrative</li>
+      <li><span class="tag low">OPPORTUNITY</span><strong>Land listing visibility:</strong> Prime parcel actively marketed at $3.5M with utilities + high traffic — supports the institutional JV capital raise positioning</li>
+      <li><span class="tag low">OPPORTUNITY</span><strong>New-home demand:</strong> 174 communities + strong absorption = demand tailwind for the development pipeline</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="ico">🗂</span> Raw Mentions (top 6)</h2>
+    <table>
+      <thead>
+        <tr><th>Channel</th><th>Source</th><th>Mention</th><th>Sentiment</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>web</td><td>blockandco.com</td><td>Prime Lee's Summit Development Ground — 19.05 ac, $3.5M, 291 Hwy</td><td class="sent neu">Neutral (market)</td></tr>
+        <tr><td>web</td><td>veritasrealty.com</td><td>Veritas Realty — development/acquisitions (name collision)</td><td class="sent neu">Neutral</td></tr>
+        <tr><td>web</td><td>veritasdevelopers.com</td><td>Veritas Developers Group — luxury residences (name collision)</td><td class="sent neu">Neutral</td></tr>
+        <tr><td>web</td><td>veritas.group</td><td>Veritas Group LLC — multifamily/self-storage (name collision)</td><td class="sent neu">Neutral</td></tr>
+        <tr><td>linkedin</td><td>linkedin.com/company/veritas-development-gr</td><td>Veritas Development Group — <strong>South Carolina</strong> (name collision)</td><td class="sent neu">Neutral</td></tr>
+        <tr><td>youtube</td><td>City of Lee's Summit</td><td>Development Minute (JUNE 2026) — new construction eastern LS</td><td class="sent pos">Positive (market)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="ico">🎯</span> Recommendations</h2>
+    <ol>
+      <li><strong>Disambiguation is mandatory</strong> — add "Lee's Summit", "David Poole", "Prime Lee's Summit" to all monitoring queries; exclude SC / other-state results.</li>
+      <li><strong>Seed review presence</strong> — Google Business Profile + BBB for the LLC (currently zero indexed reviews).</li>
+      <li><strong>Watch the Block &amp; Co listing</strong> — price/status changes on the Prime parcel are a direct signal for the capital raise.</li>
+      <li><strong>Add auth-backed channels</strong> (X / Reddit / Facebook) when available on the Windows side for fuller coverage.</li>
+    </ol>
+  </section>
+
+  <footer>
+    <div class="brand">VERITAS DEVELOPMENT GROUP · RMI SERVICE</div>
+    <div>Generated by the RMI service · Baseline report — trend data begins run 2</div>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jackson County, MO — Real Estate Development Sentiment | 2026-08-14</title>
+<style>
+  :root {
+    --navy: #0f2a4a;
+    --navy-dark: #0a1e36;
+    --gold: #c9a227;
+    --gold-light: #e8c96a;
+    --ink: #1c2733;
+    --muted: #5b6b7c;
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --line: #dde3ea;
+    --green: #1e7d4f;
+    --red: #b3382c;
+    --amber: #b07d10;
+    --blue: #1d5fa8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 60px; }
+
+  header {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, #16395f 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::after {
+    content: "";
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,162,39,0.25) 0%, transparent 70%);
+  }
+  .kicker {
+    font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold-light); font-weight: 600; margin-bottom: 8px;
+  }
+  h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #c3d0e0; font-size: 14px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .meta span {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 4px 12px; border-radius: 999px;
+    font-size: 12px; color: #e6edf5;
+  }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 18px 20px; box-shadow: 0 1px 3px rgba(15,42,74,0.06);
+  }
+  .card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); font-weight: 600; }
+  .card .value { font-size: 20px; font-weight: 700; margin-top: 6px; }
+  .card .note { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .pos { color: var(--green); } .neg { color: var(--red); } .neu { color: var(--muted); } .warn { color: var(--amber); }
+
+  section {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 24px 28px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(15,42,74,0.06);
+  }
+  h2 {
+    font-size: 17px; font-weight: 700; color: var(--navy);
+    display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    padding-bottom: 10px; border-bottom: 2px solid var(--gold);
+  }
+  h2 .ico { font-size: 18px; }
+  h3 { font-size: 14px; font-weight: 600; color: var(--ink); margin: 14px 0 6px; }
+  p, li { font-size: 14px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 5px; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    padding: 2px 10px; border-radius: 999px; margin-right: 6px; vertical-align: 1px;
+  }
+  .tag.high { background: #fdecea; color: var(--red); }
+  .tag.med  { background: #fdf3e0; color: var(--amber); }
+  .tag.low  { background: #e8f4ee; color: var(--green); }
+  .tag.neu  { background: #eef1f5; color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  th {
+    text-align: left; background: var(--navy); color: #fff;
+    padding: 8px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #f8fafc; }
+
+  .callout {
+    background: #fdf6e3; border-left: 4px solid var(--gold);
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; font-size: 13.5px;
+  }
+  .callout.blue { background: #eaf2fb; border-left-color: var(--blue); }
+
+  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 28px; }
+  footer .brand { color: var(--navy); font-weight: 700; letter-spacing: 1px; }
+
+  @media (max-width: 760px) {
+    .cards { grid-template-columns: 1fr 1fr; }
+    section { padding: 18px 16px; }
+    header { padding: 24px 20px; }
+    h1 { font-size: 21px; }
+  }
+  @media print {
+    body { background: #fff; }
+    .wrap { max-width: 100%; padding: 0; }
+    section, header, .card { box-shadow: none; break-inside: avoid; }
+    header { border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">County Market Intelligence</div>
+    <h1>Jackson County, MO — Real Estate Development Sentiment</h1>
+    <div class="sub">Market fundamentals · development pipeline · community friction · implications for Veritas</div>
+    <div class="meta">
+      <span>📅 2026-08-14</span>
+      <span>🏷 County-level</span>
+      <span>🔎 12 mentions · 4 channels</span>
+      <span>📍 Jackson County / Lee's Summit, MO</span>
+    </div>
+  </header>
+
+  <div class="cards">
+    <div class="card">
+      <div class="label">Overall Sentiment</div>
+      <div class="value pos">Positive-leaning</div>
+      <div class="note">with rising community friction</div>
+    </div>
+    <div class="card">
+      <div class="label">Median Price</div>
+      <div class="value">$287K</div>
+      <div class="note">+6.4% YTD · +6.8% YoY</div>
+    </div>
+    <div class="card">
+      <div class="label">Days on Market</div>
+      <div class="value">18</div>
+      <div class="note">competitive buyer environment</div>
+    </div>
+    <div class="card">
+      <div class="label">Community Friction</div>
+      <div class="value warn">Rising</div>
+      <div class="note">protest petitions · traffic concerns</div>
+    </div>
+  </div>
+
+  <section>
+    <h2><span class="ico">📊</span> Market Fundamentals <span class="tag low">POSITIVE</span></h2>
+    <ul>
+      <li><strong>Jackson County housing:</strong> median sales price <strong>$287,034, +6.4% YTD</strong> (eMetropolitan, June 2026); Redfin: <strong>+6.8% YoY, median $299K</strong>, 18 days on market</li>
+      <li><strong>Missouri state:</strong> prices +3.1% YoY, sales <strong>+4.2% YoY</strong> (6,819 homes sold in June)</li>
+      <li><strong>KC metro forecast:</strong> 4–6% annual appreciation through 2026 — attractive for investment</li>
+      <li><strong>No crash risk:</strong> forecasts point to slower growth / mild corrections, not sharp drops (Houzeo)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="ico">🏗️</span> Development Pipeline <span class="tag low">POSITIVE</span></h2>
+    <ul>
+      <li><strong>Oldham Village East — $416M Costco-anchored project</strong> approved by Lee's Summit City Council (130-acre multi-use, warehouse grocery centerpiece)</li>
+      <li><strong>Legacy Ridge — 131-acre mixed-use rezoning approved</strong> (SW Ward/Hook Rd): single-family + apartments + community commercial; <strong>no opposition noted</strong> at public hearing</li>
+      <li><strong>Lee's Summit Senior Community — 172-unit CCRC</strong> recommended for approval (5101 NE Lakewood Way) after site revisions</li>
+      <li><strong>Development Minute (June 2026):</strong> major developments taking shape across eastern Lee's Summit</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="ico">⚠️</span> Community Friction <span class="tag high">RISING</span></h2>
+    <ul>
+      <li><span class="tag high">PROTEST</span><strong>Protest petitions:</strong> 13 properties filed against the Senior Community (185-ft buffer; may raise Council approval threshold to 6 votes)</li>
+      <li><span class="tag med">CONCERN</span><strong>Costco neighbors:</strong> mixed views — traffic, safety, flooding concerns (Norma Hackney, KSHB)</li>
+      <li><span class="tag med">CONTROVERSY</span><strong>Sports complex soccer dome:</strong> neighbors cite traffic through residential streets and view impacts (KC Star)</li>
+      <li><span class="tag med">DELAYS</span><strong>Infrastructure pain:</strong> $25M road improvement project criticized for delays; Pryor Road widening frustrates residents (Hoodline, KSHB)</li>
+      <li><span class="tag med">HOUSING</span><strong>Apartment development concerns:</strong> mayor addresses "current development patterns don't support long-term residents" (KSHB)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="ico">📈</span> Sentiment Breakdown</h2>
+    <table>
+      <thead>
+        <tr><th>Category</th><th>Count</th><th>Trend</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Positive (market / pipeline)</td><td>6</td><td class="pos">↑</td></tr>
+        <tr><td>Negative (community friction)</td><td>5</td><td class="neg">↑ rising</td></tr>
+        <tr><td>Neutral (permits / process)</td><td>1</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="ico">🎯</span> Implications for Veritas (Prime Lee's Summit)</h2>
+    <ol>
+      <li><strong>Favorable macro backdrop</strong> — price appreciation + strong absorption support the JV capital raise narrative.</li>
+      <li><strong>Expect community scrutiny</strong> — the protest-petition pattern (Senior Community) and Costco traffic concerns signal that <em>any new development will face organized opposition</em>; entitlement strategy must include community engagement.</li>
+      <li><strong>Infrastructure is a talking point</strong> — road delays are top-of-mind; Veritas can differentiate on delivery reliability and traffic mitigation.</li>
+      <li><strong>Approval threshold risk</strong> — protest petitions can raise Council vote requirements; land assembly strategy should account for buffer-zone neighbors.</li>
+    </ol>
+    <div class="callout blue"><strong>Bottom line:</strong> the county is pro-development at the market level but increasingly contested at the parcel level. Veritas's entitlement narrative should lead with community engagement and traffic mitigation — the two friction points dominating local sentiment.</div>
+  </section>
+
+  <section>
+    <h2><span class="ico">🗂</span> Raw Sources</h2>
+    <table>
+      <thead>
+        <tr><th>Type</th><th>Source</th><th>Signal</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>market</td><td>eMetropolitan</td><td>Jackson County: $287K median, +6.4% YTD</td></tr>
+        <tr><td>market</td><td>Redfin</td><td>+6.8% YoY, $299K median, 18 days</td></tr>
+        <tr><td>market</td><td>Realtor.com</td><td>Competitive buyer environment, multiple offers</td></tr>
+        <tr><td>market</td><td>Houzeo</td><td>MO: no crash risk, slower growth through 2026</td></tr>
+        <tr><td>pipeline</td><td>KC Star</td><td>Oldham Village East $416M Costco approval</td></tr>
+        <tr><td>pipeline</td><td>Lee's Summit 311</td><td>Legacy Ridge 131-acre rezoning approved, no opposition</td></tr>
+        <tr><td>pipeline</td><td>Citizen Portal</td><td>Senior Community 172-unit CCRC, 13 protest petitions</td></tr>
+        <tr><td>friction</td><td>KSHB</td><td>Costco neighbors mixed views (traffic/safety/flooding)</td></tr>
+        <tr><td>friction</td><td>KC Star</td><td>Soccer dome controversy, neighbor concerns</td></tr>
+        <tr><td>friction</td><td>KSHB</td><td>$25M road project delays criticism</td></tr>
+        <tr><td>friction</td><td>Hoodline</td><td>Pryor Road delays frustrate residents</td></tr>
+        <tr><td>friction</td><td>KSHB</td><td>Mayor on apartment development concerns</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <div class="brand">VERITAS DEVELOPMENT GROUP · RMI SERVICE</div>
+    <div>Generated by the RMI service · County market intelligence</div>
+  </footer>
+
+</div>
+</body>
+</html>
