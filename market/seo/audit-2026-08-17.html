@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veritas Development Group — SEO Site Audit — 2026-08-17</title>
+<style>
+  :root {
+    --navy: #0f1e3d;
+    --navy-deep: #061529;
+    --gold: #c9a449;
+    --gold-light: #e5c783;
+    --ink: #2a2a2a;
+    --ink-soft: #555;
+    --bg: #fafaf7;
+    --bg-card: #ffffff;
+    --border: #e0e0d8;
+    --warning: #d97706;
+    --warning-bg: #fef3c7;
+    --info: #2563eb;
+    --info-bg: #dbeafe;
+    --critical: #dc2626;
+    --critical-bg: #fee2e2;
+    --success: #059669;
+    --success-bg: #d1fae5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    padding: 0;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: white;
+    padding: 48px 0 56px;
+    border-bottom: 4px solid var(--gold);
+  }
+  header .container { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+  .brand { flex: 1; min-width: 280px; }
+  .brand-mark {
+    font-size: 14px; letter-spacing: 2px; color: var(--gold);
+    text-transform: uppercase; font-weight: 600; margin-bottom: 8px;
+  }
+  .brand h1 { font-size: 32px; font-weight: 700; margin-bottom: 6px; line-height: 1.2; }
+  .brand .subtitle { color: var(--gold-light); font-size: 16px; font-weight: 500; }
+  .meta { font-size: 13px; color: rgba(255,255,255,0.7); text-align: right; }
+  .meta strong { color: var(--gold); display: block; margin-bottom: 4px; }
+
+  /* Score Card */
+  .score-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--critical);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin: -28px 0 32px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .score-circle {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: var(--critical); color: white;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; flex-shrink: 0;
+    border: 3px solid var(--navy);
+  }
+  .score-circle .num { font-size: 36px; font-weight: 700; line-height: 1; }
+  .score-circle .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+  .score-summary { flex: 1; min-width: 240px; }
+  .score-summary h2 { color: var(--navy); font-size: 22px; margin-bottom: 6px; }
+  .score-summary p { color: var(--ink-soft); font-size: 14px; }
+
+  /* Sections */
+  section { margin-bottom: 40px; }
+  h2.section {
+    color: var(--navy);
+    font-size: 22px;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  th {
+    background: var(--navy);
+    color: white;
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  td { padding: 10px 14px; border-top: 1px solid var(--border); font-size: 14px; }
+  tr:nth-child(even) td { background: #f9f9f6; }
+  tr:hover td { background: #fafaf2; }
+
+  /* Badges */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .badge-warning { background: var(--warning-bg); color: var(--warning); }
+  .badge-info { background: var(--info-bg); color: var(--info); }
+  .badge-critical { background: var(--critical-bg); color: var(--critical); }
+  .badge-success { background: var(--success-bg); color: var(--success); }
+  .badge-type { background: #f0f0e8; color: var(--ink-soft); }
+  .badge-rank { background: var(--navy); color: var(--gold); }
+
+  /* Issue Cards */
+  .issue-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warning);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .issue-card.info { border-left-color: var(--info); }
+  .issue-card .top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+  .issue-card .title { font-size: 16px; font-weight: 600; color: var(--navy); }
+  .issue-card .url { font-size: 12px; color: var(--ink-soft); font-family: monospace; margin-bottom: 8px; word-break: break-all; }
+  .issue-card details { margin-top: 8px; }
+  .issue-card details summary { cursor: pointer; color: var(--navy); font-size: 13px; font-weight: 600; }
+  .issue-card details[open] summary { margin-bottom: 8px; }
+  .issue-card details p { padding: 8px 12px; background: var(--bg); border-left: 3px solid var(--gold); font-size: 13px; color: var(--ink-soft); }
+
+  /* Health Score Table */
+  .health-table td:first-child { font-weight: 600; color: var(--navy); width: 50%; }
+  .health-table td:last-child { text-align: right; }
+
+  /* SERP Cards */
+  .serp-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .serp-card .rank {
+    width: 40px; height: 40px;
+    background: var(--navy); color: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 16px;
+    flex-shrink: 0;
+  }
+  .serp-card .meta { flex: 1; min-width: 0; }
+  .serp-card .title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+  .serp-card .url { font-size: 12px; color: var(--ink-soft); font-family: monospace; word-break: break-all; }
+  .serp-card .type { flex-shrink: 0; }
+
+  /* Action Plan */
+  .action-list { list-style: none; counter-reset: action; }
+  .action-list li {
+    counter-increment: action;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    padding: 14px 20px 14px 56px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .action-list li::before {
+    content: counter(action);
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    width: 28px;
+    height: 28px;
+    background: var(--navy);
+    color: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .action-list li code {
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    border: 1px solid var(--border);
+  }
+
+  /* Insight Callout */
+  .callout {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .callout strong { color: var(--navy); }
+
+  /* Footer */
+  footer {
+    background: var(--navy-deep);
+    color: rgba(255,255,255,0.7);
+    padding: 32px 0;
+    margin-top: 60px;
+    font-size: 13px;
+    text-align: center;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+  footer .stamp { color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+
+  /* Print */
+  @media print {
+    header { padding: 24px 0; }
+    .score-card { box-shadow: none; margin: 16px 0; }
+    section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="brand">
+      <div class="brand-mark">Veritas Development Group</div>
+      <h1>SEO Site Audit</h1>
+      <div class="subtitle">Veritas Development Group · veritasdevelopmentgroupllc.com</div>
+    </div>
+    <div class="meta">
+      <strong>Report Date</strong>
+      2026-08-17<br>
+      <strong>Audit ID</strong>
+      6f520b2a...c81548398811<br>
+      <strong>Market</strong>
+      USA (2840) / English<br>
+      <strong>Duration</strong>
+      5 seconds
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Score Card -->
+  <div class="score-card">
+    <div class="score-circle">
+      <div class="num">5</div>
+      <div class="label">of 100</div>
+    </div>
+    <div class="score-summary">
+      <h2>Critical — but entirely fixable</h2>
+      <p>Veritas has a real website but it's basically invisible to search engines. Zero backlinks, no measurable organic presence, and 4 technical issues that block even basic indexing. Every issue is a fixable gap, not a structural problem.</p>
+    </div>
+  </div>
+
+  <!-- Issues Summary -->
+  <section>
+    <h2 class="section">Issues at a Glance</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Severity</th>
+          <th>Count</th>
+          <th>Examples</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-critical">Critical</span></td>
+          <td><strong>0</strong></td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-warning">Warning</span></td>
+          <td><strong>3</strong></td>
+          <td>Missing H1 · No outgoing links · Thin content</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-info">Info</span></td>
+          <td><strong>1</strong></td>
+          <td>Meta description too short</td>
+        </tr>
+        <tr style="background: var(--bg);">
+          <td><strong>Total</strong></td>
+          <td><strong>4</strong></td>
+          <td>All fixable in 1–2 hours</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Technical Issues -->
+  <section>
+    <h2 class="section">Technical SEO Issues</h2>
+
+    <div class="issue-card">
+      <div class="top">
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-type">missing-h1</span>
+        <span class="title">Missing H1 heading</span>
+      </div>
+      <div class="url">https://veritasdevelopmentgroupllc.com/</div>
+      <details>
+        <summary>How to fix</summary>
+        <p>Add a single H1 that states the page's main topic, consistent with the title tag.</p>
+      </details>
+    </div>
+
+    <div class="issue-card">
+      <div class="top">
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-type">no-outgoing-links</span>
+        <span class="title">Page has no outgoing links</span>
+      </div>
+      <div class="url">https://veritasdevelopmentgroupllc.com/</div>
+      <details>
+        <summary>How to fix</summary>
+        <p>Add links to related pages, the parent category, or the homepage. If the page's navigation is rendered by JavaScript, make sure it also exists in the server-rendered HTML.</p>
+      </details>
+    </div>
+
+    <div class="issue-card">
+      <div class="top">
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-type">thin-content</span>
+        <span class="title">Thin content</span>
+      </div>
+      <div class="url">https://veritasdevelopmentgroupllc.com/</div>
+      <details>
+        <summary>How to fix</summary>
+        <p>Either expand the page with genuinely useful content, noindex it, or consolidate it into a stronger page. If the content exists but is rendered by JavaScript, ensure it is server-rendered or pre-rendered.</p>
+      </details>
+    </div>
+
+    <div class="issue-card info">
+      <div class="top">
+        <span class="badge badge-info">Info</span>
+        <span class="badge badge-type">meta-description-too-short</span>
+        <span class="title">Meta description too short</span>
+      </div>
+      <div class="url">https://veritasdevelopmentgroupllc.com/</div>
+      <details>
+        <summary>How to fix</summary>
+        <p>Expand the description to roughly 70–160 characters that summarize the page and give a reason to click.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Health Score -->
+  <section>
+    <h2 class="section">SEO Health Score</h2>
+    <table class="health-table">
+      <thead>
+        <tr><th>Category</th><th>Score</th><th>Note</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Domain Overview</td><td>0 / 100</td><td><span class="badge badge-critical">hasData: false</span></td></tr>
+        <tr><td>Technical SEO</td><td>25 / 100</td><td>4 issues, all fixable in hours</td></tr>
+        <tr><td>Backlinks</td><td>0 / 100</td><td>Zero referring domains</td></tr>
+        <tr><td>Keyword Visibility</td><td>0 / 100</td><td>Not ranking for any tracked keyword</td></tr>
+        <tr><td>Local SEO</td><td>— / 100</td><td>GBP not connected yet</td></tr>
+        <tr style="background: var(--bg);"><td><strong>Overall</strong></td><td><strong>5 / 100</strong></td><td><span class="badge badge-critical">Critical</span> — fixable</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Backlink Profile -->
+  <section>
+    <h2 class="section">Backlink Profile</h2>
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Total backlinks</td><td>0</td></tr>
+        <tr><td>Referring pages</td><td>0</td></tr>
+        <tr><td>Referring domains</td><td>0</td></tr>
+        <tr><td>Broken backlinks</td><td>—</td></tr>
+        <tr><td>Spam score</td><td>—</td></tr>
+        <tr><td>New backlinks (period)</td><td>—</td></tr>
+        <tr><td>Lost backlinks (period)</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <strong>Interpretation:</strong> Veritas has <strong>no measurable backlink profile</strong>. No referring domains, no links detected by DataForSEO's crawler. This is consistent with a brand-new site (or one that's never been link-built).
+    </div>
+  </section>
+
+  <!-- Top SERP Competitors -->
+  <section>
+    <h2 class="section">Top SERP Competitors — Lee's Summit, MO Real Estate</h2>
+    <p style="margin-bottom: 16px; color: var(--ink-soft); font-size: 14px;">
+      <strong>Keyword:</strong> "lee's summit missouri real estate" · <strong>390 monthly searches</strong> · <strong>KD: 0</strong>
+    </p>
+
+    <div class="serp-card">
+      <div class="rank">1</div>
+      <div class="meta">
+        <div class="title">Lees Summit MO Real Estate & Homes For Sale</div>
+        <div class="url">https://www.zillow.com/lees-summit-mo/</div>
+      </div>
+      <span class="badge badge-type">organic</span>
+    </div>
+
+    <div class="serp-card">
+      <div class="rank">2</div>
+      <div class="meta">
+        <div class="title">Lees Summit, MO Homes for Sale & Real Estate</div>
+        <div class="url">https://www.realtor.com/realestateandhomes-search/Lees-Summit_MO</div>
+      </div>
+      <span class="badge badge-type">organic</span>
+    </div>
+
+    <div class="serp-card">
+      <div class="rank">3</div>
+      <div class="meta">
+        <div class="title">ReeceNichols - Lee's Summit Real Estate Agency</div>
+        <div class="url">https://www.reecenichols.com/bio/lees-summit</div>
+      </div>
+      <span class="badge badge-info">local_pack</span>
+    </div>
+
+    <div class="serp-card">
+      <div class="rank">4</div>
+      <div class="meta">
+        <div class="title">RE/MAX Elite, REALTORS - Best Real Estate Agents Kansas City</div>
+        <div class="url">http://www.eliteagentskc.com/</div>
+      </div>
+      <span class="badge badge-info">local_pack</span>
+    </div>
+
+    <div class="serp-card">
+      <div class="rank">5</div>
+      <div class="meta">
+        <div class="title">Lewis Real Estate Team</div>
+        <div class="url">http://lewisret.com/</div>
+      </div>
+      <span class="badge badge-info">local_pack</span>
+    </div>
+
+    <div class="serp-card">
+      <div class="rank">6</div>
+      <div class="meta">
+        <div class="title">(People Also Ask block)</div>
+        <div class="url">—</div>
+      </div>
+      <span class="badge badge-type">PAA</span>
+    </div>
+
+    <div class="serp-card">
+      <div class="rank">7</div>
+      <div class="meta">
+        <div class="title">Lees Summit, MO Real Estate & Homes For Sale</div>
+        <div class="url">https://www.trulia.com/MO/Lees_Summit/</div>
+      </div>
+      <span class="badge badge-type">organic</span>
+    </div>
+
+    <div class="serp-card">
+      <div class="rank">8</div>
+      <div class="meta">
+        <div class="title">Lee's Summit, MO Homes for Sale & Real Estate</div>
+        <div class="url">https://www.redfin.com/city/10535/MO/Lee-s-Summit</div>
+      </div>
+      <span class="badge badge-type">organic</span>
+    </div>
+
+    <div class="callout">
+      <strong>Strategic insight:</strong> Aggregators (Zillow, Realtor.com, Trulia, Redfin) own organic ranks. Local agencies (ReeceNichols, RE/MAX Elite, Lewis Real Estate Team) own local_pack. <strong>No developer / construction companies rank</strong> for this keyword — Veritas has a real opening for the "Lee's Summit development" niche. The People Also Ask block (rank 6) is a content gap to target.
+    </div>
+  </section>
+
+  <!-- Quick-Win Action Plan -->
+  <section>
+    <h2 class="section">Quick-Win Action Plan (1–2 hours)</h2>
+
+    <ol class="action-list">
+      <li>
+        <strong>Add H1:</strong> <code>&lt;h1&gt;Veritas Development Group — Lee's Summit Site Preparation &amp; Real Estate Development&lt;/h1&gt;</code>
+      </li>
+      <li>
+        <strong>Add internal links</strong> — homepage → /services, /projects, /about. Ensure server-rendered nav (not JS-only).
+      </li>
+      <li>
+        <strong>Expand homepage content</strong> to 500+ words describing services, service area, team, and contact info.
+      </li>
+      <li>
+        <strong>Expand meta description</strong> to 150 chars including "Lee's Summit" + "site preparation" + "real estate development".
+      </li>
+      <li>
+        <strong>Migrate to SSR/SSG</strong> (Next.js, Astro, or Hugo) — fixes the root cause of the JS-SPA rendering problems.
+      </li>
+      <li>
+        <strong>Submit to Google Search Console</strong> (currently not connected).
+      </li>
+      <li>
+        <strong>Create Google Business Profile</strong> for "Veritas Development Group" at 816-405-6181.
+      </li>
+      <li>
+        <strong>Build 5 supporting pages</strong> targeting KD=0 keywords (excavation, concrete, site prep, commercial, blog).
+      </li>
+      <li>
+        <strong>Build first 5 backlinks</strong> (LSEDC Patron-tier listing, KC Chamber, LS Realtor Assoc., partner directories).
+      </li>
+    </ol>
+  </section>
+
+  <!-- Tools Used -->
+  <section>
+    <h2 class="section">Tools Used</h2>
+    <table>
+      <thead>
+        <tr><th>OpenSEO Tool</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>whoami</code></td><td>Auth check</td></tr>
+        <tr><td><code>get_domain_overview</code></td><td>Confirmed <code>hasData: false</code></td></tr>
+        <tr><td><code>research_keywords</code></td><td>Top LS real estate keywords (Aug 17 baseline)</td></tr>
+        <tr><td><code>run_site_audit</code></td><td>Started + completed this audit</td></tr>
+        <tr><td><code>get_audit_status</code></td><td>Tracked to completion (5s)</td></tr>
+        <tr><td><code>get_audit_issues</code></td><td>Pulled the 4 issues above</td></tr>
+        <tr><td><code>get_serp_results</code></td><td>Pulled top-8 SERP for top LS keyword</td></tr>
+        <tr><td><code>get_backlinks_overview</code></td><td>Confirmed zero backlinks</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Audit Run Metadata -->
+  <section>
+    <h2 class="section">Audit Run Metadata</h2>
+    <table>
+      <tbody>
+        <tr><td><strong>Started</strong></td><td>2026-08-17 14:42:03 UTC</td></tr>
+        <tr><td><strong>Completed</strong></td><td>2026-08-17 14:42:08 UTC</td></tr>
+        <tr><td><strong>Duration</strong></td><td><span class="badge badge-success">5 seconds</span></td></tr>
+        <tr><td><strong>Pages crawled</strong></td><td>1</td></tr>
+        <tr><td><strong>Lighthouse</strong></td><td>skipped</td></tr>
+        <tr><td><strong>Audit ID</strong></td><td><code>6f520b2a-4e25-4eb3-a96c-c81548398811</code></td></tr>
+        <tr><td><strong>Project ID</strong></td><td><code>68a063a1-0817-458a-a387-c2b649373a0c</code></td></tr>
+        <tr><td><strong>Re-run cadence</strong></td><td>Monthly (Tier 4)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    <div class="stamp">VERITAS · Built on Integrity. Driven by Excellence.</div>
+    <div>
+      Veritas Development Group · 816-405-6181 · veritasdevelopmentgroupllc.com<br>
+      SEO Audit generated 2026-08-17 · seo-monitor skill via OpenSEO MCP<br>
+      <a href="https://github.com/Ksdeng1559/veritasdevelopment-wiki/tree/main/market/seo">Live at GitHub wiki</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
