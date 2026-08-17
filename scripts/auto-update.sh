@@ -25,10 +25,10 @@ for f in "$SRC"/rmi/reports/*; do
     cp -u "$f" "reports/$name"
 done
 
-# 3. Sync full Jackson County intelligence structure (NEW 2026-08-16)
+# 3. Sync full Jackson County intelligence structure + SEO + Lee's Summit market
 # Replaces old single BTR subdirectory sync with the full organized tree
-mkdir -p market/jackson-county market/lees-summit/btr
-for src_dir in market/jackson-county market/lees-summit; do
+mkdir -p market/jackson-county market/lees-summit/btr market/seo
+for src_dir in market/jackson-county market/lees-summit market/seo; do
     [ -d "$SRC/$src_dir" ] || continue
     cp -ru "$SRC/$src_dir/." "$REPO/$src_dir/" 2>/dev/null || true
 done
