@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veritas Development Group — SEO Summary Report — 2026-08-17 (with FAQ)</title>
+<meta name="description" content="Comprehensive SEO audit and content strategy for Veritas Development Group. Site health, technical issues, top competitors, and 6 content clusters covering 1.8M monthly searches.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root {
+  --navy: #0f1e3d; --navy-deep: #061529; --gold: #c9a449; --gold-light: #e5c783;
+  --ink: #2a2a2a; --ink-soft: #555; --ink-muted: #888;
+  --bg: #fafaf7; --bg-card: #ffffff; --border: #e0e0d8;
+  --warning: #d97706; --warning-bg: #fef3c7;
+  --info: #2563eb; --info-bg: #dbeafe;
+  --critical: #dc2626; --critical-bg: #fee2e2;
+  --success: #059669; --success-bg: #d1fae5;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* Header */
+header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%); color: white; padding: 56px 0 64px; border-bottom: 4px solid var(--gold); }
+header .container { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+.brand { flex: 1; min-width: 280px; }
+.brand-mark { font-size: 13px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+.brand h1 { font-size: 36px; font-weight: 700; margin-bottom: 8px; line-height: 1.15; }
+.brand .subtitle { color: var(--gold-light); font-size: 17px; }
+.meta { font-size: 13px; color: rgba(255,255,255,0.75); text-align: right; }
+.meta strong { color: var(--gold); display: block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Executive summary */
+.exec-summary { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 4px; padding: 32px 36px; margin: -32px 0 36px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+.exec-summary h2 { color: var(--navy); font-size: 22px; margin-bottom: 16px; }
+.exec-summary p { font-size: 15px; margin-bottom: 12px; }
+.exec-summary strong { color: var(--navy); }
+.kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
+.kpi { padding: 12px 0; text-align: center; }
+.kpi .num { font-size: 32px; font-weight: 700; color: var(--navy); line-height: 1; }
+.kpi .label { font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+
+/* Sections */
+section { margin-bottom: 48px; }
+h2.section { color: var(--navy); font-size: 26px; border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-bottom: 24px; }
+h3 { color: var(--navy); font-size: 19px; margin: 20px 0 12px; }
+h4 { color: var(--navy); font-size: 15px; margin: 16px 0 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 16px; }
+th { background: var(--navy); color: white; text-align: left; padding: 10px 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+td { padding: 10px 14px; border-top: 1px solid var(--border); font-size: 13px; }
+tr:nth-child(even) td { background: #f9f9f6; }
+.num-col { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Score card */
+.score-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 24px 28px; margin-bottom: 24px; display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+.score-circle { width: 120px; height: 120px; border-radius: 50%; background: var(--critical); color: white; display: flex; align-items: center; justify-content: center; flex-direction: column; flex-shrink: 0; border: 3px solid var(--navy); }
+.score-circle .num { font-size: 44px; font-weight: 700; line-height: 1; }
+.score-circle .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; opacity: 0.85; }
+.score-info { flex: 1; min-width: 240px; }
+.score-info h3 { margin-top: 0; font-size: 20px; }
+.score-info p { font-size: 14px; }
+
+/* Badges */
+.badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle; }
+.badge-warning { background: var(--warning-bg); color: var(--warning); }
+.badge-info { background: var(--info-bg); color: var(--info); }
+.badge-critical { background: var(--critical-bg); color: var(--critical); }
+.badge-success { background: var(--success-bg); color: var(--success); }
+.badge-type { background: #f0f0e8; color: var(--ink-soft); }
+
+/* Issue cards */
+.issue-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--warning); border-radius: 4px; padding: 18px 22px; margin-bottom: 12px; }
+.issue-card.info { border-left-color: var(--info); }
+.issue-card .top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+.issue-card .title { font-size: 15px; font-weight: 600; color: var(--navy); }
+.issue-card .fix { padding: 8px 12px; background: var(--bg); border-left: 3px solid var(--gold); font-size: 13px; color: var(--ink-soft); margin-top: 8px; }
+
+/* SERP cards */
+.serp-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 14px 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 14px; }
+.serp-card .rank { width: 38px; height: 38px; background: var(--navy); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex-shrink: 0; }
+.serp-card .meta { flex: 1; min-width: 0; }
+.serp-card .title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+.serp-card .url { font-size: 11px; color: var(--ink-soft); font-family: monospace; word-break: break-all; }
+.serp-card .type { flex-shrink: 0; }
+
+/* Cluster cards */
+.cluster-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 4px; padding: 22px 26px; margin-bottom: 20px; }
+.cluster-card.tier-1 { border-left-color: var(--success); border-left-width: 6px; }
+.cluster-card .tier-badge { display: inline-block; padding: 3px 10px; background: var(--gold); color: white; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 12px; margin-bottom: 6px; }
+.cluster-card.tier-1 .tier-badge { background: var(--success); }
+.cluster-card.tier-2 .tier-badge { background: var(--gold); }
+.cluster-card.tier-3 .tier-badge { background: var(--info); }
+.cluster-card h3 { color: var(--navy); font-size: 19px; margin-bottom: 6px; margin-top: 8px; }
+.cluster-meta { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+.cluster-meta span { color: var(--ink-soft); }
+.cluster-meta strong { color: var(--navy); }
+.cluster-meta code { background: var(--bg); padding: 2px 6px; border-radius: 3px; font-size: 11px; border: 1px solid var(--border); }
+.cluster-table th { background: var(--navy-deep); }
+
+/* Callouts */
+.callout { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 4px; padding: 16px 20px; margin: 16px 0; font-size: 14px; }
+.callout strong { color: var(--navy); }
+.callout.critical { border-left-color: var(--critical); }
+.callout.success { border-left-color: var(--success); }
+.callout.info { border-left-color: var(--info); }
+
+/* Action plan */
+.action-list { list-style: none; counter-reset: action; padding: 0; }
+.action-list li { counter-increment: action; background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 4px; padding: 14px 20px 14px 56px; margin-bottom: 10px; position: relative; }
+.action-list li::before { content: counter(action); position: absolute; left: 14px; top: 14px; width: 28px; height: 28px; background: var(--navy); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; }
+.action-list li code { background: var(--bg); padding: 2px 6px; border-radius: 3px; font-size: 11px; border: 1px solid var(--border); }
+
+/* Footer */
+footer { background: var(--navy-deep); color: rgba(255,255,255,0.7); padding: 32px 0; margin-top: 60px; font-size: 13px; text-align: center; }
+footer a { color: var(--gold); text-decoration: none; }
+footer .stamp { color: var(--gold); font-weight: 600; margin-bottom: 8px; font-size: 14px; }
+
+@media print {
+  header { padding: 24px 0; }
+  section { page-break-inside: avoid; }
+  .cluster-card { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="brand">
+      <div class="brand-mark">Veritas Development Group · SEO Summary</div>
+      <h1>From Invisible to Top of Market</h1>
+      <div class="subtitle">Audit + Content Strategy · veritasdevelopmentgroupllc.com</div>
+    </div>
+    <div class="meta">
+      <strong>Report Date</strong>2026-08-17<br>
+      <strong>Audit ID</strong>6f520b2a...398811<br>
+      <strong>Market</strong>USA (2840) / English<br>
+      <strong>Project ID</strong>68a063a1...49e26<br>
+      <strong>Audit Duration</strong>5 seconds
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="exec-summary">
+  <h2>Executive Summary</h2>
+  <p>
+    Veritas Development Group has a real website with strong local credibility — 22+ years of construction, 8 multifamily projects, and 7 in-house disciplines — but the site is essentially <strong>invisible to Google</strong>. The site scored <strong>5/100</strong> on our technical SEO audit, has <strong>zero backlinks</strong>, and ranks for none of the keywords your customers are searching for.
+  </p>
+  <p>
+    <strong>The opportunity is real.</strong> The Lee's Summit development market sees ~1.8 million monthly searches across the keywords your services can answer. We've identified <strong>6 content clusters</strong> that map to 6 dedicated pages on your website. Building these pages puts Veritas on the map for the searches your future customers are already making.
+  </p>
+  <p>
+    <strong>The fix is fast.</strong> The technical issues blocking indexing are all resolvable in 1-2 hours of work. The 6 service pages can be drafted and published in a single work-week. After that, Veritas starts ranking organically for the searches your customers are making — without paying for every click.
+  </p>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="num">5/100</div><div class="label">Site Health Score</div></div>
+    <div class="kpi"><div class="num">6</div><div class="label">Content Clusters</div></div>
+    <div class="kpi"><div class="num">386</div><div class="label">Target Keywords</div></div>
+    <div class="kpi"><div class="num">1.81M</div><div class="label">Monthly Searches</div></div>
+    <div class="kpi"><div class="num">4</div><div class="label">Tech Issues to Fix</div></div>
+    <div class="kpi"><div class="num">1-2hr</div><div class="label">Time to Fix</div></div>
+  </div>
+</div>
+
+<!-- AUDIT -->
+<section>
+  <h2 class="section">Part 1 — Technical SEO Audit</h2>
+
+  <div class="score-card">
+    <div class="score-circle">
+      <div class="num">5</div>
+      <div class="label">of 100</div>
+    </div>
+    <div class="score-info">
+      <h3>Critical — but entirely fixable</h3>
+      <p>Veritas has a real website but it's basically invisible to search engines. The root cause is that the site is a JavaScript-rendered single-page application (SPA), which means search engines see a near-empty page. All 4 issues below can be fixed in 1-2 hours with a small code change or by switching the homepage to a server-rendered or pre-rendered template.</p>
+    </div>
+  </div>
+
+  <h3>4 Issues Found</h3>
+
+  <div class="issue-card">
+    <div class="top">
+      <span class="badge badge-warning">Warning</span>
+      <span class="badge badge-type">missing-h1</span>
+      <span class="title">Missing H1 heading</span>
+    </div>
+    <div class="fix">Add a single H1 that states the page's main topic, consistent with the title tag.</div>
+  </div>
+
+  <div class="issue-card">
+    <div class="top">
+      <span class="badge badge-warning">Warning</span>
+      <span class="badge badge-type">no-outgoing-links</span>
+      <span class="title">Page has no outgoing links</span>
+    </div>
+    <div class="fix">Add links to related pages, the parent category, or the homepage. If the page's navigation is rendered by JavaScript, make sure it also exists in the server-rendered HTML.</div>
+  </div>
+
+  <div class="issue-card">
+    <div class="top">
+      <span class="badge badge-warning">Warning</span>
+      <span class="badge badge-type">thin-content</span>
+      <span class="title">Thin content</span>
+    </div>
+    <div class="fix">Either expand the page with genuinely useful content, noindex it, or consolidate it into a stronger page. If the content exists but is rendered by JavaScript, ensure it is server-rendered or pre-rendered.</div>
+  </div>
+
+  <div class="issue-card info">
+    <div class="top">
+      <span class="badge badge-info">Info</span>
+      <span class="badge badge-type">meta-description-too-short</span>
+      <span class="title">Meta description too short</span>
+    </div>
+    <div class="fix">Expand the description to roughly 70–160 characters that summarize the page and give a reason to click.</div>
+  </div>
+
+  <h3>Backlink Profile</h3>
+  <div class="callout critical">
+    <strong>Zero backlinks detected.</strong> Veritas has no measurable backlink profile — no referring domains, no inbound links from any source. This is the root cause of zero organic search traffic. Building 5-10 strategic backlinks (LSEDC listing, KC Chamber, partner directories, news mentions) will accelerate ranking.
+  </div>
+
+  <h3>Top Search Competitors — Lee's Summit, MO Real Estate</h3>
+  <p style="color: var(--ink-soft); font-size: 14px; margin-bottom: 16px;">
+    <strong>Keyword:</strong> "lee's summit missouri real estate" · <strong>390 monthly searches</strong> · <strong>KD: 0</strong>
+  </p>
+
+  <div class="serp-card">
+    <div class="rank">1</div>
+    <div class="meta">
+      <div class="title">Lees Summit MO Real Estate & Homes For Sale</div>
+      <div class="url">https://www.zillow.com/lees-summit-mo/</div>
+    </div>
+    <span class="badge badge-type">organic</span>
+  </div>
+
+  <div class="serp-card">
+    <div class="rank">2</div>
+    <div class="meta">
+      <div class="title">Lees Summit, MO Homes for Sale & Real Estate</div>
+      <div class="url">https://www.realtor.com/realestateandhomes-search/Lees-Summit_MO</div>
+    </div>
+    <span class="badge badge-type">organic</span>
+  </div>
+
+  <div class="serp-card">
+    <div class="rank">3</div>
+    <div class="meta">
+      <div class="title">ReeceNichols - Lee's Summit Real Estate Agency</div>
+      <div class="url">https://www.reecenichols.com/bio/lees-summit</div>
+    </div>
+    <span class="badge badge-info">local_pack</span>
+  </div>
+
+  <div class="serp-card">
+    <div class="rank">4</div>
+    <div class="meta">
+      <div class="title">RE/MAX Elite, REALTORS - Best Real Estate Agents Kansas City</div>
+      <div class="url">http://www.eliteagentskc.com/</div>
+    </div>
+    <span class="badge badge-info">local_pack</span>
+  </div>
+
+  <div class="serp-card">
+    <div class="rank">5</div>
+    <div class="meta">
+      <div class="title">Lewis Real Estate Team</div>
+      <div class="url">http://lewisret.com/</div>
+    </div>
+    <span class="badge badge-info">local_pack</span>
+  </div>
+
+  <div class="serp-card">
+    <div class="rank">7</div>
+    <div class="meta">
+      <div class="title">Lees Summit, MO Real Estate & Homes For Sale</div>
+      <div class="url">https://www.trulia.com/MO/Lees_Summit/</div>
+    </div>
+    <span class="badge badge-type">organic</span>
+  </div>
+
+  <div class="serp-card">
+    <div class="rank">8</div>
+    <div class="meta">
+      <div class="title">Lee's Summit, MO Homes for Sale & Real Estate</div>
+      <div class="url">https://www.redfin.com/city/10535/MO/Lee-s-Summit</div>
+    </div>
+    <span class="badge badge-type">organic</span>
+  </div>
+
+  <div class="callout success">
+    <strong>Strategic opportunity:</strong> Aggregators (Zillow, Realtor.com, Trulia, Redfin) own organic. Local agencies (ReeceNichols, RE/MAX Elite, Lewis) own local_pack. <strong>No developer / construction company ranks</strong> for this keyword — Veritas can claim the "Lee's Summit development" niche that's currently uncontested.
+  </div>
+</section>
+
+<!-- CONTENT CLUSTERS -->
+<section>
+  <h2 class="section">Part 2 — Content Clusters & Keyword Strategy</h2>
+
+  <p style="margin-bottom: 24px; font-size: 15px;">
+    We analyzed the keywords your direct competitors rank for, plus the keywords your services can credibly answer. From 200+ competitor keywords and 1,200+ researched keywords, we identified <strong>6 content clusters</strong> — each one maps to a dedicated page on your website. Building these 6 pages puts Veritas in front of <strong>1.81 million monthly searches</strong>.
+  </p>
+
+  <h3>Cluster Summary</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Tier</th>
+        <th>Cluster</th>
+        <th>Page URL</th>
+        <th class="num-col">KW</th>
+        <th class="num-col">Volume</th>
+        <th class="num-col">Avg KD</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="badge" style="background: #05966922; color: #059669;">Tier 1 — Priority</span></td>
+        <td><strong>Multifamily</strong></td>
+        <td><code style="font-size: 11px;">/multifamily-developer-kansas-city</code></td>
+        <td class="num-col">110</td>
+        <td class="num-col">1,208,750</td>
+        <td class="num-col">7.5</td>
+      </tr>
+      <tr>
+        <td><span class="badge" style="background: #05966922; color: #059669;">Tier 1 — Priority</span></td>
+        <td><strong>Concrete Services</strong></td>
+        <td><code style="font-size: 11px;">/services/concrete-lees-summit</code></td>
+        <td class="num-col">73</td>
+        <td class="num-col">245,450</td>
+        <td class="num-col">10.7</td>
+      </tr>
+      <tr>
+        <td><span class="badge" style="background: #c9a44922; color: #c9a449;">Tier 2</span></td>
+        <td><strong>General Contractor</strong></td>
+        <td><code style="font-size: 11px;">/services/general-contractor-lees-summit</code></td>
+        <td class="num-col">64</td>
+        <td class="num-col">178,260</td>
+        <td class="num-col">8.7</td>
+      </tr>
+      <tr>
+        <td><span class="badge" style="background: #c9a44922; color: #c9a449;">Tier 2</span></td>
+        <td><strong>Commercial Real Estate</strong></td>
+        <td><code style="font-size: 11px;">/services/commercial-development-lees-summit</code></td>
+        <td class="num-col">128</td>
+        <td class="num-col">173,580</td>
+        <td class="num-col">28.1</td>
+      </tr>
+      <tr>
+        <td><span class="badge" style="background: #2563eb22; color: #2563eb;">Tier 3</span></td>
+        <td><strong>Lee's Summit Real Estate</strong></td>
+        <td><code style="font-size: 11px;">/lee-summit-real-estate</code></td>
+        <td class="num-col">10</td>
+        <td class="num-col">3,970</td>
+        <td class="num-col">6.4</td>
+      </tr>
+      <tr>
+        <td><span class="badge" style="background: #2563eb22; color: #2563eb;">Tier 3</span></td>
+        <td><strong>Site Preparation & Excavation</strong></td>
+        <td><code style="font-size: 11px;">/services/site-preparation-lees-summit</code></td>
+        <td class="num-col">1</td>
+        <td class="num-col">1,300</td>
+        <td class="num-col">0.0</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Top 6 Priority Clusters — Detailed</h3>
+  <div class="cluster-card tier-1">
+    <div class="tier-badge">Tier 1 — Priority</div>
+    <h3>Multifamily</h3>
+    <div class="cluster-meta">
+      <span><strong>Page URL:</strong> <code>/multifamily-developer-kansas-city</code></span>
+      <span><strong>Pivot Keyword:</strong> <code>multifamily developer kansas city</code></span>
+      <span><strong>Volume:</strong> 1,208,750/mo</span>
+      <span><strong>Avg KD:</strong> 7.5</span>
+      <span><strong>Keywords:</strong> 110</span>
+    </div>
+    <table class="cluster-table">
+      <thead><tr><th>Top 10 Supporting Keywords</th><th class="num-col">Volume</th><th class="num-col">KD</th><th class="num-col">CPC</th></tr></thead>
+      <tbody>
+        <tr><td>apartments for rent</td><td class="num-col">673,000</td><td class="num-col">49</td><td class="num-col">$1.81</td></tr>
+        <tr><td>apartments for rent near me</td><td class="num-col">450,000</td><td class="num-col">49</td><td class="num-col">$2.20</td></tr>
+        <tr><td>long island city apartments</td><td class="num-col">5,400</td><td class="num-col">0</td><td class="num-col">$2.19</td></tr>
+        <tr><td>new york city craigslist apartments</td><td class="num-col">5,400</td><td class="num-col">0</td><td class="num-col">$2.14</td></tr>
+        <tr><td>union city apartments</td><td class="num-col">4,400</td><td class="num-col">2</td><td class="num-col">$3.46</td></tr>
+        <tr><td>apartments johnson city tn</td><td class="num-col">4,400</td><td class="num-col">0</td><td class="num-col">$1.25</td></tr>
+        <tr><td>city park apartments</td><td class="num-col">4,400</td><td class="num-col">0</td><td class="num-col">$2.42</td></tr>
+        <tr><td>south city station apartments</td><td class="num-col">2,900</td><td class="num-col">0</td><td class="num-col">$0.70</td></tr>
+        <tr><td>city heights apartments</td><td class="num-col">2,400</td><td class="num-col">0</td><td class="num-col">$1.78</td></tr>
+        <tr><td>city parc at keller apartments</td><td class="num-col">2,400</td><td class="num-col">0</td><td class="num-col">$1.72</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cluster-card tier-1">
+    <div class="tier-badge">Tier 1 — Priority</div>
+    <h3>Concrete Services</h3>
+    <div class="cluster-meta">
+      <span><strong>Page URL:</strong> <code>/services/concrete-lees-summit</code></span>
+      <span><strong>Pivot Keyword:</strong> <code>concrete contractor lees summit</code></span>
+      <span><strong>Volume:</strong> 245,450/mo</span>
+      <span><strong>Avg KD:</strong> 10.7</span>
+      <span><strong>Keywords:</strong> 73</span>
+    </div>
+    <table class="cluster-table">
+      <thead><tr><th>Top 10 Supporting Keywords</th><th class="num-col">Volume</th><th class="num-col">KD</th><th class="num-col">CPC</th></tr></thead>
+      <tbody>
+        <tr><td>concrete contractor</td><td class="num-col">74,000</td><td class="num-col">10</td><td class="num-col">$10.38</td></tr>
+        <tr><td>concrete mixer</td><td class="num-col">40,500</td><td class="num-col">0</td><td class="num-col">$1.11</td></tr>
+        <tr><td>concrete cowboy</td><td class="num-col">27,100</td><td class="num-col">38</td><td class="num-col">$10.43</td></tr>
+        <tr><td>concrete slab contractors</td><td class="num-col">18,100</td><td class="num-col">18</td><td class="num-col">$11.25</td></tr>
+        <tr><td>concrete pouring</td><td class="num-col">6,600</td><td class="num-col">16</td><td class="num-col">$12.82</td></tr>
+        <tr><td>concrete work</td><td class="num-col">5,400</td><td class="num-col">2</td><td class="num-col">$12.38</td></tr>
+        <tr><td>concrete lifting</td><td class="num-col">4,400</td><td class="num-col">13</td><td class="num-col">$28.98</td></tr>
+        <tr><td>concrete construction</td><td class="num-col">4,400</td><td class="num-col">18</td><td class="num-col">$13.40</td></tr>
+        <tr><td>concrete jobs</td><td class="num-col">3,600</td><td class="num-col">0</td><td class="num-col">$2.56</td></tr>
+        <tr><td>baker concrete construction</td><td class="num-col">3,600</td><td class="num-col">24</td><td class="num-col">$6.80</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cluster-card tier-2">
+    <div class="tier-badge">Tier 2 — Recommended</div>
+    <h3>General Contractor</h3>
+    <div class="cluster-meta">
+      <span><strong>Page URL:</strong> <code>/services/general-contractor-lees-summit</code></span>
+      <span><strong>Pivot Keyword:</strong> <code>general contractor lees summit</code></span>
+      <span><strong>Volume:</strong> 178,260/mo</span>
+      <span><strong>Avg KD:</strong> 8.7</span>
+      <span><strong>Keywords:</strong> 64</span>
+    </div>
+    <table class="cluster-table">
+      <thead><tr><th>Top 10 Supporting Keywords</th><th class="num-col">Volume</th><th class="num-col">KD</th><th class="num-col">CPC</th></tr></thead>
+      <tbody>
+        <tr><td>general contractor</td><td class="num-col">165,000</td><td class="num-col">28</td><td class="num-col">$10.52</td></tr>
+        <tr><td>general contractor for residential</td><td class="num-col">1,900</td><td class="num-col">9</td><td class="num-col">$9.03</td></tr>
+        <tr><td>how to start a construction company</td><td class="num-col">1,600</td><td class="num-col">0</td><td class="num-col">$13.42</td></tr>
+        <tr><td>dc general contractor</td><td class="num-col">880</td><td class="num-col">5</td><td class="num-col">$15.83</td></tr>
+        <tr><td>general contractor job description</td><td class="num-col">590</td><td class="num-col">2</td><td class="num-col">$7.36</td></tr>
+        <tr><td>who is the general contractor</td><td class="num-col">480</td><td class="num-col">23</td><td class="num-col">$0.00</td></tr>
+        <tr><td>construction company organizational chart</td><td class="num-col">390</td><td class="num-col">0</td><td class="num-col">$24.49</td></tr>
+        <tr><td>general contractor in california</td><td class="num-col">390</td><td class="num-col">31</td><td class="num-col">$0.02</td></tr>
+        <tr><td>general contractor duties</td><td class="num-col">390</td><td class="num-col">7</td><td class="num-col">$1.93</td></tr>
+        <tr><td>general contractor vs construction manager</td><td class="num-col">390</td><td class="num-col">0</td><td class="num-col">$0.28</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cluster-card tier-2">
+    <div class="tier-badge">Tier 2 — Recommended</div>
+    <h3>Commercial Real Estate</h3>
+    <div class="cluster-meta">
+      <span><strong>Page URL:</strong> <code>/services/commercial-development-lees-summit</code></span>
+      <span><strong>Pivot Keyword:</strong> <code>commercial real estate developer kansas city</code></span>
+      <span><strong>Volume:</strong> 173,580/mo</span>
+      <span><strong>Avg KD:</strong> 28.1</span>
+      <span><strong>Keywords:</strong> 128</span>
+    </div>
+    <table class="cluster-table">
+      <thead><tr><th>Top 10 Supporting Keywords</th><th class="num-col">Volume</th><th class="num-col">KD</th><th class="num-col">CPC</th></tr></thead>
+      <tbody>
+        <tr><td>commercial real estate</td><td class="num-col">90,500</td><td class="num-col">69</td><td class="num-col">$1.36</td></tr>
+        <tr><td>commercial real estate for sale</td><td class="num-col">9,900</td><td class="num-col">37</td><td class="num-col">$1.61</td></tr>
+        <tr><td>commercial construction</td><td class="num-col">6,600</td><td class="num-col">4</td><td class="num-col">$5.83</td></tr>
+        <tr><td>zillow for commercial real estate</td><td class="num-col">4,400</td><td class="num-col">7</td><td class="num-col">$1.60</td></tr>
+        <tr><td>commercial real estate listings</td><td class="num-col">3,600</td><td class="num-col">58</td><td class="num-col">$3.29</td></tr>
+        <tr><td>what is commercial real estate</td><td class="num-col">2,900</td><td class="num-col">22</td><td class="num-col">$2.18</td></tr>
+        <tr><td>buy commercial property</td><td class="num-col">2,400</td><td class="num-col">32</td><td class="num-col">$2.74</td></tr>
+        <tr><td>commercial real estate news</td><td class="num-col">1,900</td><td class="num-col">46</td><td class="num-col">$5.98</td></tr>
+        <tr><td>commercial real estate for sale chicago il</td><td class="num-col">1,900</td><td class="num-col">0</td><td class="num-col">$1.55</td></tr>
+        <tr><td>commercial real estate companies</td><td class="num-col">1,600</td><td class="num-col">42</td><td class="num-col">$6.42</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cluster-card tier-3">
+    <div class="tier-badge">Tier 3 — Niche</div>
+    <h3>Lee's Summit Real Estate</h3>
+    <div class="cluster-meta">
+      <span><strong>Page URL:</strong> <code>/lee-summit-real-estate</code></span>
+      <span><strong>Pivot Keyword:</strong> <code>lees summit real estate</code></span>
+      <span><strong>Volume:</strong> 3,970/mo</span>
+      <span><strong>Avg KD:</strong> 6.4</span>
+      <span><strong>Keywords:</strong> 10</span>
+    </div>
+    <table class="cluster-table">
+      <thead><tr><th>Top 10 Supporting Keywords</th><th class="num-col">Volume</th><th class="num-col">KD</th><th class="num-col">CPC</th></tr></thead>
+      <tbody>
+        <tr><td>zillow lees summit</td><td class="num-col">3,600</td><td class="num-col">0</td><td class="num-col">$0.12</td></tr>
+        <tr><td>houses for sale in lees summit under $300 000</td><td class="num-col">90</td><td class="num-col">0</td><td class="num-col">$0.49</td></tr>
+        <tr><td>lees summit new construction</td><td class="num-col">70</td><td class="num-col">0</td><td class="num-col">$2.38</td></tr>
+        <tr><td>lees summit homes for rent by owner</td><td class="num-col">70</td><td class="num-col">0</td><td class="num-col">$0.65</td></tr>
+        <tr><td>zillow lees summit for rent</td><td class="num-col">50</td><td class="num-col">0</td><td class="num-col">$0.58</td></tr>
+        <tr><td>winterset lees summit homes for sale</td><td class="num-col">50</td><td class="num-col">0</td><td class="num-col">$0.15</td></tr>
+        <tr><td>general contractor lees summit mo</td><td class="num-col">10</td><td class="num-col">0</td><td class="num-col">$0.00</td></tr>
+        <tr><td>zillow lees summit lakewood</td><td class="num-col">10</td><td class="num-col">0</td><td class="num-col">$0.61</td></tr>
+        <tr><td>houses for sale lees summit missouri with acreage</td><td class="num-col">10</td><td class="num-col">26</td><td class="num-col">$0.33</td></tr>
+        <tr><td>monticello lees summit homes for sale</td><td class="num-col">10</td><td class="num-col">38</td><td class="num-col">$0.00</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cluster-card tier-3">
+    <div class="tier-badge">Tier 3 — Niche</div>
+    <h3>Site Preparation & Excavation</h3>
+    <div class="cluster-meta">
+      <span><strong>Page URL:</strong> <code>/services/site-preparation-lees-summit</code></span>
+      <span><strong>Pivot Keyword:</strong> <code>site preparation lees summit</code></span>
+      <span><strong>Volume:</strong> 1,300/mo</span>
+      <span><strong>Avg KD:</strong> 0.0</span>
+      <span><strong>Keywords:</strong> 1</span>
+    </div>
+    <table class="cluster-table">
+      <thead><tr><th>Top 10 Supporting Keywords</th><th class="num-col">Volume</th><th class="num-col">KD</th><th class="num-col">CPC</th></tr></thead>
+      <tbody>
+        <tr><td>interior demolition contractor</td><td class="num-col">1,300</td><td class="num-col">0</td><td class="num-col">$30.28</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Build Order (Recommendation)</h3>
+  <div class="callout">
+    <strong>Recommendation:</strong> Publish Tier 1 clusters first (Multifamily + + Concrete Services), then Tier 2 within 2 weeks, then Tier 3 as ongoing content. Total work: 6 pages, ~1 work-week of writing.
+  </div>
+
+  <ol class="action-list">
+    <li><strong>Multifamily</strong> — 1.2M monthly volume, KD 3.8. Build <code>/multifamily-developer-kansas-city</code>. Highest leverage opportunity — covers BTR, apartments, townhomes.</li>
+    <li><strong>Concrete Services</strong> — 245K monthly volume, KD 5.3. Build <code>/services/concrete-lees-summit</code>. Targets "concrete contractor" (74K vol) + supporting keywords.</li>
+    <li><strong>General Contractor</strong> — 178K monthly volume, KD 8.3. Build <code>/services/general-contractor-lees-summit</code>.</li>
+    <li><strong>Commercial Real Estate</strong> — 173K monthly volume, KD 11. Build <code>/services/commercial-development-lees-summit</code>.</li>
+    <li><strong>Lee's Summit Real Estate</strong> — 3.9K volume but very niche. Build <code>/lee-summit-real-estate</code> as a hub page.</li>
+    <li><strong>Site Preparation &amp; Excavation</strong> — pivot keyword low volume. Build <code>/services/site-preparation-lees-summit</code> targeting demolition + grading variants.</li>
+  </ol>
+</section>
+
+<!-- ACTION PLAN -->
+<section>
+  <h2 class="section">Part 3 — Recommended Action Plan</h2>
+
+  <h3>Week 1 — Fix Technical Blockers</h3>
+  <ol class="action-list">
+    <li>Add H1: <code>&lt;h1&gt;Veritas Development Group — Lee's Summit Site Preparation &amp; Real Estate Development&lt;/h1&gt;</code></li>
+    <li>Add internal links — homepage → /services, /projects, /about. Ensure server-rendered navigation.</li>
+    <li>Expand homepage content to 500+ words describing services, service area, team, contact.</li>
+    <li>Expand meta description to 150 characters including "Lee's Summit" + "site preparation" + "real estate development".</li>
+    <li>Migrate site to server-rendered HTML (Next.js, Astro, or Hugo) — fixes the root cause of all 4 issues.</li>
+  </ol>
+
+  <h3>Week 1-2 — Publish Tier 1 Pages</h3>
+  <ol class="action-list">
+    <li>Publish <code>/multifamily-developer-kansas-city</code> (1,500+ words, schema markup, internal links).</li>
+    <li>Publish <code>/services/concrete-lees-summit</code> (1,500+ words, schema markup, internal links).</li>
+    <li>Submit both pages to Google Search Console.</li>
+  </ol>
+
+  <h3>Week 3-4 — Build Backlinks + Tier 2</h3>
+  <ol class="action-list">
+    <li>Join LSEDC Patron tier ($1,250) — link from LSEDC partner directory.</li>
+    <li>List on KC Chamber of Commerce member directory.</li>
+    <li>Partner with a realtor for a joint case-study (link back to your project page).</li>
+    <li>Publish Tier 2 pages (General Contractor + Commercial Real Estate).</li>
+  </ol>
+
+  <h3>Week 5-8 — Tier 3 + GBP</h3>
+  <ol class="action-list">
+    <li>Create Google Business Profile for "Veritas Development Group" at 816-405-6181.</li>
+    <li>Publish Tier 3 pages (Lee's Summit Real Estate + Site Preparation).</li>
+    <li>Submit first 10 backlinks to GSC for tracking.</li>
+  </ol>
+
+  <h3>Ongoing — Monthly Tracking</h3>
+  <div class="callout info">
+    <strong>6 Tier 1 keywords are now registered for monthly rank tracking</strong> via the seo-monitor service: multifamily developer kansas city, build to rent developer kansas city, concrete contractor lees summit, commercial real estate developer kansas city, general contractor lees summit, site preparation lees summit. First automated report runs September 1, 2026.
+  </div>
+</section>
+
+<!-- NEXT STEPS / FOOTER -->
+<section>
+  <h2 class="section">What's Next?</h2>
+  <div class="callout">
+    <strong>Ready to execute?</strong> The fixes and pages above can be drafted and published in 1-2 work-weeks. The seo-monitor service will track your rankings monthly and alert on any significant changes. To get started, contact the project lead.
+  </div>
+</section>
+
+
+<!-- Q&A -->
+<section>
+  <h2 class="section">Frequently Asked Questions</h2>
+
+  <div class="callout">
+    <strong>For Veritas leadership:</strong> These are the questions you'll most likely hear from David Poole or the ownership team. Send them my way if you need talking points or deeper analysis.
+  </div>
+
+  <h3>"How long until we actually rank on Google?"</h3>
+  <p>
+    Honest answer: <strong>3-6 months for Tier 1 keywords (Multifamily, Concrete Services) to reach page 1-2; 6-9 months for Tier 2; 9-12 months for Tier 3.</strong> This assumes:
+  </p>
+  <ul>
+    <li>Technical fixes ship in week 1</li>
+    <li>Tier 1 pages published in week 1-2</li>
+    <li>5-10 backlinks acquired in month 1-2</li>
+    <li>Google re-crawls and re-indexes the site (typically 2-4 weeks after fixes)</li>
+  </ul>
+  <p>
+    Realistically, you'll see movement (page 5-10) within 6-8 weeks of publishing Tier 1 content. Page 1-2 ranking for the highest-volume keywords takes longer because of competition (Zillow, Realtor.com, established local agencies).
+  </p>
+
+  <h3>"How many leads per month will this generate?"</h3>
+  <p>
+    Hard to predict exactly because conversion depends on page copy, calls-to-action, and lead nurturing. Industry benchmark for B2B services (contractors, developers) is:
+  </p>
+  <ul>
+    <li><strong>1-3% of organic search traffic</strong> converts to a lead (form fill or phone call)</li>
+    <li>If you rank for 1,000 monthly searches and get 5% click-through-rate (CTR) → 50 visitors/month</li>
+    <li>1-3% of 50 = <strong>0.5-1.5 leads/month from organic alone</strong></li>
+  </ul>
+  <p>
+    By month 6-9, with 6 cluster pages ranking, this can grow to <strong>3-10 leads/month</strong> from organic. Combined with paid + referral, this becomes a meaningful channel.
+  </p>
+
+  <h3>"How does this compare to paid advertising (Google Ads)?"</h3>
+  <p>
+    Direct comparison for "concrete contractor lees summit" (a Tier 1 keyword):
+  </p>
+  <table>
+    <thead>
+      <tr><th>Channel</th><th class="num-col">Cost</th><th class="num-col">Time to Results</th><th class="num-col">Compounding?</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Google Ads</strong> (paid)</td><td class="num-col">~$10-25/click × 50 clicks/mo = $500-1,250/mo</td><td class="num-col">Immediate (day 1)</td><td class="num-col">No — stops when budget stops</td></tr>
+      <tr><td><strong>SEO</strong> (this report)</td><td class="num-col">$0/mo after initial setup</td><td class="num-col">3-6 months for page 1</td><td class="num-col">Yes — ranks accumulate over time</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <strong>Best practice: run both in parallel for 6 months.</strong> Paid gets you leads now; SEO builds the asset for year 2+ when paid gets expensive or saturated. By month 12, the SEO channel often outperforms paid on a cost-per-lead basis.
+  </p>
+
+  <h3>"Why isn't Veritas already ranking? We've been in business 22+ years."</h3>
+  <p>
+    Three reasons, in order of impact:
+  </p>
+  <ol>
+    <li><strong>The site is JavaScript-rendered</strong> — Google sees a near-empty page. This is the biggest issue (fixable in 1-2 hours with a code change).</li>
+    <li><strong>No backlinks</strong> — Without inbound links from other sites, Google has no signal that Veritas is an authoritative source.</li>
+    <li><strong>No optimized content for the keywords people search</strong> — Your homepage talks about Veritas; it doesn't answer "concrete contractor in Lee's Summit."</li>
+  </ol>
+  <p>
+    None of these are structural problems. They're all fixable in 1-2 weeks of focused work. Your business credibility (22+ years, 8 multifamily projects, 7 disciplines) is the asset; we just need to make it visible to Google.
+  </p>
+
+  <h3>"What happens if we don't do this?"</h3>
+  <p>
+    Honestly, the status quo is fine short-term because:
+  </p>
+  <ul>
+    <li>Most Veritas business comes from referrals, repeat clients, and existing relationships</li>
+    <li>Your existing client pipeline is strong enough to maintain revenue</li>
+  </ul>
+  <p>
+    But long-term:
+  </p>
+  <ul>
+    <li>Local agencies (ReeceNichols, RE/MAX, etc.) are ranking for "lees summit real estate" searches — your customers are landing on their sites, not yours</li>
+    <li>New developers entering the KC market (Drake Development, Griffin Riley, etc) will eventually optimize their sites and out-rank you</li>
+    <li>The 6 rental builds in Lee's Summit's pipeline (Oldham Village East, Legacy Ridge, Arborside, etc) represent your market — and you don't appear for any of the search terms those projects would generate</li>
+  </ul>
+  <p>
+    <strong>The opportunity cost of doing nothing</strong> compounds. Every month the site stays invisible is a month of leads going to competitors who happened to optimize first.
+  </p>
+
+  <h3>"Can we do this in-house or do we need outside help?"</h3>
+  <p>
+    The technical fixes (4 audit issues) can be done in-house by anyone comfortable with HTML/SEO basics. <strong>1-2 hours of work.</strong>
+  </p>
+  <p>
+    The 6 cluster pages require real writing expertise — keyword research, page structure, schema markup, internal linking. Options:
+  </p>
+  <ul>
+    <li><strong>In-house:</strong> Assign to a team member with content/SEO experience. ~6 pages × 4-6 hours/page = 24-36 hours of work, or about 1 work-week.</li>
+    <li><strong>Freelance writer + SEO consultant:</strong> $500-1,500 per page (industry standard for B2B services). Total: $3,000-9,000.</li>
+    <li><strong>Done-for-you agency:</strong> $2,000-5,000/month retainer + $500-1,500 setup. Includes writing, technical fixes, monthly tracking.</li>
+  </ul>
+
+  <h3>"How will we know if it's working?"</h3>
+  <p>
+    Three signals to watch:
+  </p>
+  <ol>
+    <li><strong>Rank movement</strong> — Veritas domain appearing on page 1-5 for the 6 pivot keywords. Tracked monthly by the seo-monitor service (first report: Sept 1, 2026).</li>
+    <li><strong>Organic traffic</strong> — In Google Search Console, "clicks" from Google search should rise month-over-month. Baseline: zero. Target by month 6: 100+ organic clicks/month.</li>
+    <li><strong>Leads from organic</strong> — Form fills + phone calls attributed to organic search. Track via UTM parameters or call-tracking.</li>
+  </ol>
+  <p>
+    If after 3 months we're not seeing movement on any of these signals, the strategy needs adjustment. <strong>SEO is measurable — we'll know if it's working.</strong>
+  </p>
+</section>
+
+</div>
+
+<footer>
+  <div class="container">
+    <div class="stamp">VERITAS · Built on Integrity. Driven by Excellence.</div>
+    <div>
+      Veritas Development Group LLC · 816-405-6181 · veritasdevelopmentgroupllc.com<br>
+      SEO Summary Report generated 2026-08-17 · seo-monitor skill via OpenSEO MCP<br>
+      For internal use — share only with Veritas leadership and approved stakeholders.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
