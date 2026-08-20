@@ -15,8 +15,9 @@
 | **[policy/](./policy/)** | LS 20-year vision, Ignite! plan, targeted areas | LS Economic Development Outline 2026 + ED Incentive Policy 2023 |
 | **[workforce/](./workforce/)** | Education pipeline, employer pool, school district | LS Economic Development Outline 2026 |
 | **[projects/](./projects/)** | Active mega-projects, master-planned communities, mixed-use | LS Economic Development Outline 2026 + source-docs |
-| **[activations/](./activations/)** | Land listings, target areas, deal-flow opportunities | South LS Land Listings (Zimmer) + North LS Land Reserve |
-| **[source-docs/raw/](./source-docs/raw/)** | Original 7 source documents (verbatim) | Authoritative |
+| **[activations/](./activations/)** | Land listings, target areas, deal-flow opportunities | South LS Land Listings (Zimmer) + North LS Land Reserve + LandSearch listings |
+| **[industrial-market/](./industrial-market/)** | KC industrial market reports + multifamily + investment outlook | Newmark, Cushman & Wakefield, Yardi Matrix (1Q26 / March 2026) |
+| **[source-docs/raw/](./source-docs/raw/)** | Original source documents (verbatim) | Authoritative |
 
 ### By Source (verbatim)
 
@@ -29,6 +30,13 @@
 | Kansas City Metro Overview | `source-docs/raw/kansas-city-metro-overview.md` | 2026 |
 | South Lee's Summit Land Listings (Zimmer) | `source-docs/raw/south-lees-summit-land-listings-zimmer-2026.md` | 2026-07 |
 | Land Reserve North Lee's Summit Concept | `source-docs/raw/land-reserve-north-lees-summit-concept.md` | 2025-07 |
+| Lee's Summit Commercial Land (LandSearch) | `source-docs/raw/commercial-land-listings-landsearch-2026.md` | 2026 (70 listings) |
+| KC Industrial 1Q26 (Newmark) | `industrial-market/industrial-1q26-newmark.md` | 2026-04 |
+| KC Industrial 1Q26 (Cushman & Wakefield) | `industrial-market/industrial-1q26-cushman-wakefield.md` | 2026-Q1 |
+| KC Multifamily March 2026 (Yardi Matrix) | `industrial-market/multifamily-march-2026-yardi.md` | 2026-03 |
+| KC 4Q25 Market Overview (Newmark) | `industrial-market/overview-4q25-newmark.md` | 2026-Q1 |
+| Newmark Market Report Index | `industrial-market/newmark-report-index.md` | 2026 |
+| Strategic Investment Outlook 2026 | `industrial-market/strategic-investment-outlook-2026.md` | 2026 |
 
 ---
 
@@ -71,6 +79,7 @@
 - **Pitching tax-incentive value?** → [incentives/](./incentives/)
 - **Looking for land to acquire?** → [activations/](./activations/)
 - **Tracking specific projects?** → [projects/](./projects/)
+- **Industrial market fundamentals?** → [industrial-market/](./industrial-market/)
 - **Want the original source docs?** → [source-docs/raw/](./source-docs/raw/)
 
 ---
