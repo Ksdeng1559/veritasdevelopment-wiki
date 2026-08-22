@@ -30,6 +30,11 @@
 
 See [`pitch-summary.md`](./pitch-summary.md) for the full pitch narrative.
 
+## Capital partner targeting
+
+- 📋 [TAM — Co-Sponsor Capital (2026-08-22)](./tam-co-sponsor-capital-2026-08-22.md) — 53 orgs across KC foundations + KC + national FFOs + RE-focused GPs
+- 📊 [TAM CSV (data)](./tam-co-sponsor-capital-2026-08-22.csv) — deduplicated root-domain list, verified/unknown tiers
+
 ## Related reports
 
 - 📊 [2026-08-14 RMI Combined Report](../reports/2026-08-14-veritas-combined.html) — owner-facing company + market + community intelligence
