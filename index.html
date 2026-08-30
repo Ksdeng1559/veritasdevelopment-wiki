@@ -130,6 +130,8 @@
     .statgrid, .statgrid.three{grid-template-columns:repeat(2,1fr);}
     .tracker, .decision-band, .flow{grid-template-columns:1fr;}
     .risklist{grid-template-columns:1fr;}
+    .partner-stats{grid-template-columns:1fr;}
+    .roleitem .rtitle{flex-basis:100%;}
     table.data{font-size:11px;}
   }
 
@@ -210,6 +212,29 @@
   .scenario-callout p{font-family:'Inter';font-size:13px;line-height:1.6;color:var(--ink);margin:0 0 14px;}
   .scenario-callout .match-list{background:var(--line-strong);}
   .scenario-callout .match-item{background:var(--surface);}
+
+  .rolelist{display:flex;flex-direction:column;gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);}
+  .roleitem{background:var(--surface);padding:16px 20px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;}
+  .roleitem .rtitle{font-family:'IBM Plex Mono';font-size:11.5px;color:var(--blue);letter-spacing:0.03em;text-transform:uppercase;flex:0 0 200px;}
+  .roleitem p{font-size:13px;color:var(--muted);margin:0;line-height:1.6;flex:1 1 320px;}
+
+  .partner-grid{display:flex;flex-direction:column;gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);margin-top:24px;}
+  .partner-card{background:var(--surface);padding:22px 24px;display:flex;flex-direction:column;gap:14px;}
+  .partner-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;}
+  .partner-head .pname{font-family:'Space Grotesk';font-weight:700;font-size:16px;}
+  .partner-roles{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px;}
+  .roletag{font-family:'IBM Plex Mono';font-size:9.5px;text-transform:uppercase;letter-spacing:0.03em;background:var(--blue-tint);color:var(--blue);border:1px solid var(--blue);padding:2px 7px;white-space:nowrap;}
+  .badge.watch{background:var(--paper);color:var(--muted);border-color:var(--line-strong);}
+  .partner-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;padding:14px 0;border-top:1px dashed var(--line-strong);border-bottom:1px dashed var(--line-strong);}
+  .partner-stat .pslbl{font-family:'IBM Plex Mono';font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:3px;}
+  .partner-stat .psval{font-family:'IBM Plex Mono';font-size:12.5px;color:var(--ink);line-height:1.4;}
+  .partner-support{display:flex;flex-wrap:wrap;gap:6px;}
+  .support-tag{font-family:'IBM Plex Mono';font-size:9.5px;background:var(--paper);color:var(--muted);border:1px solid var(--line-strong);padding:2px 7px;}
+  .partner-fit p{font-size:12.5px;color:var(--ink);line-height:1.6;margin:0 0 10px;}
+  .partner-fit p:last-child{margin-bottom:0;}
+  .partner-fit p b{font-family:'IBM Plex Mono';font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);display:block;margin-bottom:3px;font-weight:500;}
+  .partner-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-family:'IBM Plex Mono';font-size:10.5px;color:var(--muted);}
+  .partner-foot a{color:var(--blue);text-decoration:underline;text-decoration-style:dotted;}
 </style>
 </head>
 <body>
@@ -222,6 +247,7 @@
     <a data-scroll="stack">Capital Stack Map</a>
     <a data-scroll="lenders">US Lender Shortlist</a>
     <a data-scroll="lendersearch">Lender Search</a>
+    <a data-scroll="cosponsor">Co-Sponsorship</a>
     <a data-scroll="ratios">Ratio Engine</a>
     <a data-scroll="structuring">Loan Structuring</a>
     <a data-scroll="holdcodes">Hold Codes</a>
@@ -253,7 +279,6 @@
 
     <div class="hero-cta-row">
       <a data-scroll="calculator" class="btn btn-primary">Qualify a deal →</a>
-      <a href="https://app.notion.com/p/dd51e3e5ccf940a28d76756fa2e308d2?pvs=204" target="_blank" rel="noopener" class="btn btn-ghost">Open approved lender matrix ↗</a>
       <a data-scroll="system" class="btn btn-ghost">See how it plugs into your tool</a>
     </div>
 
@@ -462,6 +487,224 @@
         <div class="match-item"><div><div class="mname">Trez Capital <span class="badge refer">Tier B</span></div><div class="mmeta">Land, land servicing, construction — up to 85% LTC · Multifamily, Mixed-Use, Commercial · U.S. &amp; Canada</div></div><a href="https://www.trezcapital.com/" target="_blank" rel="noopener">Trez Capital →</a></div>
       </div>
       <p style="margin-top:14px;">Buchanan Street Partners' own research notes (captured in the Notion database) flag it as one of the only lenders confirmed non-recourse across <em>both</em> horizontal development and vertical construction — but geography is noted as Western-U.S.-focused, so Missouri coverage needs a direct call before it goes on a shortlist. Builders Capital's AD&amp;C All-in-One is the single closest structural match to this scenario: one facility spanning acquisition through vertical.</p>
+    </div>
+  </section>
+
+  <!-- ============ CO-SPONSORSHIP & CAPITAL PARTNERS ============ -->
+  <section id="cosponsor">
+    <div class="sheet-label"><span class="num">C-1.7</span> Co-Sponsorship &amp; Capital Partners</div>
+    <div class="section-head">
+      <h2>The other side of the stack — equity and sponsor capacity, not repayment.</h2>
+      <p>Everything through C-1.6 sources <em>debt</em> — capital that gets repaid on a schedule regardless of the deal's outcome. This section sources the partners who sit on the <em>equity</em> side of the capital stack: Co-GP, institutional sponsor, JV equity, preferred equity, and capital-advisor relationships that fill a GP co-investment gap, bring balance-sheet and back-office capacity Veritas doesn't have in-house, or place equity from their own investor network. Pulled from the companion <b>Capital Partner Matrix — Co-Sponsors &amp; Strategic Partners</b> Notion database (linked from the same Veritas Capital Markets resource as the lender matrix), supplemented this session with live program-page research for the roles the database doesn't cover yet.</p>
+    </div>
+
+    <h3 style="font-size:15px;margin:0 0 12px;">Partner roles</h3>
+    <div class="rolelist">
+      <div class="roleitem"><div class="rtitle">Co-GP</div><p>A capital partner invests alongside Veritas at the general-partner level, sharing GP obligations and participating in the promote. Used when a JV's LP requires a GP co-investment Veritas's own balance sheet can't fully fund on its own — the partner's capital counts toward that requirement.</p></div>
+      <div class="roleitem"><div class="rtitle">Institutional Sponsor Partner</div><p>Furthest along the spectrum from "capital only" toward "co-operator" — a partner with the balance sheet, guarantee capacity, and back-office infrastructure (accounting, legal, compliance, reporting) to stand alongside or occasionally in front of Veritas as sponsor of record on a deal that needs institutional credibility Veritas doesn't yet carry alone.</p></div>
+      <div class="roleitem"><div class="rtitle">JV Equity</div><p>Traditional LP/JV structure: the partner funds the majority of project equity (typically 80–95%) for a preferred return plus a share of profit above it, while Veritas contributes a smaller co-investment and retains operating control as GP.</p></div>
+      <div class="roleitem"><div class="rtitle">Preferred Equity</div><p>Capital positioned between senior debt and common equity — repaid after the lender but before Veritas or any common-equity partner sees a distribution. Fills a capital-stack gap (often construction cost growth or a refinance shortfall) without diluting ownership as much as raising new common equity would.</p></div>
+      <div class="roleitem"><div class="rtitle">Placement / Capital Advisor</div><p>Doesn't provide capital directly — sources and structures debt and/or equity from its own investor network in exchange for a placement fee. Worth engaging when Veritas's own relationship pipeline (below) doesn't reach the right check size or investor type for a specific deal.</p></div>
+    </div>
+
+    <h3 style="font-size:15px;margin:32px 0 12px;">Evaluation framework (SP codes)</h3>
+    <table class="data">
+      <thead><tr><th>Code</th><th>Screens for</th><th>What it answers</th></tr></thead>
+      <tbody>
+        <tr><td class="code">SP-1</td><td>GP-equity capacity &amp; fit</td><td>Check range (min/max), asset-class and project-stage appetite, and governance fit — does Veritas retain operating control, or does the partner require shared or majority control of major decisions?</td></tr>
+        <tr><td class="code">SP-2</td><td>Support capability</td><td>Balance sheet and liquidity strength, guarantee capacity (payment, completion, carve-out), and back-office depth — reporting/accounting, legal/compliance, and equity-syndication capability the partner brings beyond the check itself.</td></tr>
+        <tr><td class="code">SP-3</td><td>Relationship pipeline &amp; verification</td><td>Where the relationship actually stands (Research → Qualified → Contacted → Meeting → Diligence → Active → Term Sheet → Closed) and the Verification Tier (A–C) — has current appetite and terms been confirmed directly, or is this still desk research?</td></tr>
+        <tr><td class="code">SP-4</td><td>Project / phase fit</td><td>Which stage of a specific Veritas deal the partner actually fits (raw land through stabilized), and the exact capital-stack role they'd occupy if engaged — not a generic capability claim.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:15px;margin:32px 0 4px;">Partner pipeline</h3>
+    <p style="font-family:'IBM Plex Mono';font-size:11px;color:var(--muted);margin-bottom:0;">9 partners now in the Notion database — the original 3, plus 6 sourced live via Tavily and Exa this session (added to Notion to cover roles and check sizes the database didn't have entries for) — all at Relationship Stage = Research, Verification Tier = C. None of the nine below are qualified relationships — every field marked "Unknown/Verify" or "Unconfirmed" needs a direct call before it informs a deal.</p>
+
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="partner-head">
+          <div><div class="pname">ATLAS Capital Partners</div><div class="partner-roles"><span class="roletag">Co-GP</span><span class="roletag">Institutional Sponsor</span><span class="roletag">JV Equity</span></div></div>
+          <span class="badge watch">Tier C — Research</span>
+        </div>
+        <div class="partner-stats">
+          <div class="partner-stat"><div class="pslbl">Check range</div><div class="psval">Unknown/Verify</div></div>
+          <div class="partner-stat"><div class="pslbl">Governance fit</div><div class="psval">Shared control</div></div>
+          <div class="partner-stat"><div class="pslbl">Stage appetite</div><div class="psval">Raw Land → Vertical Construction</div></div>
+          <div class="partner-stat"><div class="pslbl">Geography</div><div class="psval">U.S. — verify coverage</div></div>
+        </div>
+        <div class="partner-support">
+          <span class="support-tag">Balance Sheet</span><span class="support-tag">Liquidity Support</span><span class="support-tag">Credit Enhancement</span><span class="support-tag">Guarantees</span><span class="support-tag">Dev. Expertise</span><span class="support-tag">Reporting</span><span class="support-tag">Legal/Compliance</span><span class="support-tag">Equity Syndication</span>
+        </div>
+        <div class="partner-fit">
+          <p><b>Capital-stack role</b>Verified live: ATLAS supports emerging sponsors with Co-GP capital plus back-office capacity (finance/accounting, legal/compliance, reporting) — positioned to fill GP equity, JV equity, or a broader institutional-sponsor gap depending on deal need. No capability is committed until qualified directly.</p>
+        </div>
+        <div class="partner-foot"><span>Relationship: Research</span><a href="https://www.atlasphx.com/co-gp" target="_blank" rel="noopener">Co-GP platform →</a></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-head">
+          <div><div class="pname">H Equities</div><div class="partner-roles"><span class="roletag">Co-GP</span></div></div>
+          <span class="badge watch">Tier C — Research</span>
+        </div>
+        <div class="partner-stats">
+          <div class="partner-stat"><div class="pslbl">Check range</div><div class="psval">$1M – $4M</div></div>
+          <div class="partner-stat"><div class="pslbl">Governance fit</div><div class="psval">Operating sponsor retained</div></div>
+          <div class="partner-stat"><div class="pslbl">Stage appetite</div><div class="psval">Entitlement, Vertical Construction</div></div>
+          <div class="partner-stat"><div class="pslbl">Geography</div><div class="psval">Nationwide</div></div>
+        </div>
+        <div class="partner-support">
+          <span class="support-tag">Structuring expertise</span><span class="support-tag">Capital stack knowledge</span>
+        </div>
+        <div class="partner-fit">
+          <p><b>Capital-stack role</b>Verified live: co-invests at the GP level alongside the operating sponsor, sharing the promote — sponsor keeps day-to-day control and property management. Requires a demonstrated operating track record; hold period matches the deal's business plan (typically 2–5 years). A clean fit for a defined GP co-investment shortfall inside the $1–4M range, not a full equity raise.</p>
+        </div>
+        <div class="partner-foot"><span>Relationship: Research</span><a href="https://www.hequities.com/debt/co-gp-equity" target="_blank" rel="noopener">Co-GP equity program →</a></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-head">
+          <div><div class="pname">Armada</div><div class="partner-roles"><span class="roletag">Preferred Equity</span></div></div>
+          <span class="badge refer">Sourced live — not yet in Notion</span>
+        </div>
+        <div class="partner-stats">
+          <div class="partner-stat"><div class="pslbl">Check range</div><div class="psval">Sub-$10M</div></div>
+          <div class="partner-stat"><div class="pslbl">Governance fit</div><div class="psval">Unknown/Verify</div></div>
+          <div class="partner-stat"><div class="pslbl">Stage appetite</div><div class="psval">New construction, refi, value-add</div></div>
+          <div class="partner-stat"><div class="pslbl">Geography</div><div class="psval">Nationwide</div></div>
+        </div>
+        <div class="partner-support">
+          <span class="support-tag">Institutional-quality underwriting</span>
+        </div>
+        <div class="partner-fit">
+          <p><b>Capital-stack role</b>Preferred equity specialist focused on the lower middle market and sub-$10M checks — a segment Armada's own materials describe as underserved by institutional players. Explicitly targets sponsors whose original equity is already deployed into land/pre-development costs by the time construction financing closes, which is the exact gap a rezoning-then-horizontal-development deal creates. Not yet added to the Notion database — recommend qualifying and adding if it holds up.</p>
+        </div>
+        <div class="partner-foot"><span>Relationship: not yet contacted</span><a href="https://armadavp.com/news-insights/understanding-preferred-equity-in-commercial-real-estate" target="_blank" rel="noopener">Preferred equity overview →</a></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-head">
+          <div><div class="pname">George Smith Partners</div><div class="partner-roles"><span class="roletag">Placement / Capital Advisor</span></div></div>
+          <span class="badge refer">Sourced live — not yet in Notion</span>
+        </div>
+        <div class="partner-stats">
+          <div class="partner-stat"><div class="pslbl">Check range</div><div class="psval">Advisor — no direct check</div></div>
+          <div class="partner-stat"><div class="pslbl">Governance fit</div><div class="psval">N/A — arranges, doesn't invest</div></div>
+          <div class="partner-stat"><div class="pslbl">Stage appetite</div><div class="psval">Ground-up through stabilized</div></div>
+          <div class="partner-stat"><div class="pslbl">Geography</div><div class="psval">Nationwide (LA-headquartered)</div></div>
+        </div>
+        <div class="partner-support">
+          <span class="support-tag">Debt + equity in one mandate</span><span class="support-tag">Capital-stack structuring</span><span class="support-tag">Investor network / placement</span>
+        </div>
+        <div class="partner-fit">
+          <p><b>Capital-stack role</b>Established CRE-specific capital markets advisory shop — sources and negotiates both debt and equity from its investor network rather than investing its own capital, and can run an entire capital stack (senior, mezz, JV/pref equity) through one mandate. The right call when Veritas's own relationship pipeline below doesn't reach the check size or investor type a specific deal needs. Not yet added to the Notion database.</p>
+        </div>
+        <div class="partner-foot"><span>Relationship: not yet contacted</span><a href="https://www.gspartners.com/services/joint-venture-equity" target="_blank" rel="noopener">JV equity placement →</a></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-head">
+          <div><div class="pname">Enterstate Capital</div><div class="partner-roles"><span class="roletag">Co-GP</span><span class="roletag">Institutional Sponsor</span></div></div>
+          <span class="badge refer">Sourced live — not yet in Notion</span>
+        </div>
+        <div class="partner-stats">
+          <div class="partner-stat"><div class="pslbl">Check range</div><div class="psval">$0.1M – $10M (GP contribution)</div></div>
+          <div class="partner-stat"><div class="pslbl">Governance fit</div><div class="psval">Operating sponsor retained</div></div>
+          <div class="partner-stat"><div class="pslbl">Stage appetite</div><div class="psval">Not stage-specific — screens by GP-equity gap</div></div>
+          <div class="partner-stat"><div class="pslbl">Geography</div><div class="psval">Nationwide</div></div>
+        </div>
+        <div class="partner-support">
+          <span class="support-tag">Equity Syndication (LP/JV sourcing)</span><span class="support-tag">Capital markets access</span>
+        </div>
+        <div class="partner-fit">
+          <p><b>Capital-stack role</b>Verified live: funds up to 80% of Veritas's GP co-investment requirement (sponsor typically retains ~20% of the GP contribution, itself 10–20% of total equity). Its own integrated capital markets arm can also source the LP/JV equity directly — potentially solving both the GP-gap and the broader equity raise in one relationship. Prefers programmatic relationships over one-off deals.</p>
+        </div>
+        <div class="partner-foot"><span>Relationship: not yet contacted</span><a href="https://www.enterstatecapital.com/gp-principal-equity-investments" target="_blank" rel="noopener">GP & Co-GP program →</a></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-head">
+          <div><div class="pname">Mountain Real Estate Capital</div><div class="partner-roles"><span class="roletag">JV Equity</span><span class="roletag">Institutional Sponsor</span></div></div>
+          <span class="badge refer">Sourced live — not yet in Notion</span>
+        </div>
+        <div class="partner-stats">
+          <div class="partner-stat"><div class="pslbl">Check range</div><div class="psval">$5M–$50M single asset · $20M–$150M portfolio</div></div>
+          <div class="partner-stat"><div class="pslbl">Governance fit</div><div class="psval">Shared control</div></div>
+          <div class="partner-stat"><div class="pslbl">Stage appetite</div><div class="psval">Raw Land, Entitlement, Horizontal Dev</div></div>
+          <div class="partner-stat"><div class="pslbl">Geography</div><div class="psval">Nationwide, ~30 MSAs — verify KC metro</div></div>
+        </div>
+        <div class="partner-support">
+          <span class="support-tag">Land banking</span><span class="support-tag">Pari-passu &amp; preferred equity JVs</span><span class="support-tag">Entity-level investment</span>
+        </div>
+        <div class="partner-fit">
+          <p><b>Capital-stack role</b>Verified live: the strongest structural match found this session for an agricultural/raw land parcel moving through entitlement into horizontal development. Since 2010 has committed ~$1B across 50,000+ single-family lots and 9,000+ acres in 400+ communities with 25 operating partners — an established, national institutional land-development capital source, not a boutique. Structures span pari-passu JV, preferred equity JV, off-balance-sheet, and land banking.</p>
+        </div>
+        <div class="partner-foot"><span>Relationship: not yet contacted</span><a href="https://mrec.com/investment/" target="_blank" rel="noopener">Investment program →</a></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-head">
+          <div><div class="pname">Stokes Capital Management</div><div class="partner-roles"><span class="roletag">JV Equity</span></div></div>
+          <span class="badge refer">Sourced live — not yet in Notion</span>
+        </div>
+        <div class="partner-stats">
+          <div class="partner-stat"><div class="pslbl">Check range</div><div class="psval">Unknown/Verify</div></div>
+          <div class="partner-stat"><div class="pslbl">Governance fit</div><div class="psval">Shared control (50/50 JV)</div></div>
+          <div class="partner-stat"><div class="pslbl">Stage appetite</div><div class="psval">Raw Land, Horizontal Development</div></div>
+          <div class="partner-stat"><div class="pslbl">Geography</div><div class="psval"><span class="badge soft">Southeast US only</span> likely not Missouri</div></div>
+        </div>
+        <div class="partner-support">
+          <span class="support-tag">Off-market deal flow</span><span class="support-tag">Dual debt + equity structure</span>
+        </div>
+        <div class="partner-fit">
+          <p><b>Capital-stack role</b>Verified live: structurally the closest match found this session to a pure land-plus-horizontal-development JV — 100% land-acquisition financing at 8–12% plus a 50/50 JV equity share on the development upside, first-lien secured. But their stated footprint is the Southeast via a 60-year regional developer network; Missouri is very likely out of coverage. Worth studying as a model to pitch a similar structure to a Midwest-focused source, not worth outreach as-is.</p>
+        </div>
+        <div class="partner-foot"><span>Relationship: geography mismatch — informational only</span><a href="https://stokes.capital/pages/" target="_blank" rel="noopener">Program overview →</a></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-head">
+          <div><div class="pname">NetLeaseX Capital</div><div class="partner-roles"><span class="roletag">Co-GP</span><span class="roletag">Preferred Equity</span></div></div>
+          <span class="badge refer">Sourced live — not yet in Notion</span>
+        </div>
+        <div class="partner-stats">
+          <div class="partner-stat"><div class="pslbl">Check range</div><div class="psval">$500K minimum, no stated max</div></div>
+          <div class="partner-stat"><div class="pslbl">Governance fit</div><div class="psval">Shared control (major decisions)</div></div>
+          <div class="partner-stat"><div class="pslbl">Stage appetite</div><div class="psval">All types, including land — nationwide</div></div>
+          <div class="partner-stat"><div class="pslbl">Geography</div><div class="psval">Nationwide</div></div>
+        </div>
+        <div class="partner-support">
+          <span class="support-tag">Can also arrange senior debt</span><span class="support-tag">Preferred + Co-GP combined</span>
+        </div>
+        <div class="partner-fit">
+          <p><b>Capital-stack role</b>Verified live: funds up to 80% of the sponsor's GP investment as a preferred membership interest (10% cumulative preferred return, ~5-year term, non-recourse except standard carve-outs and a completion guaranty on development deals). Explicitly names land as an eligible asset type — unlike most other Co-GP sources found this session — and its $500K minimum is lower than H Equities' $1M floor.</p>
+        </div>
+        <div class="partner-foot"><span>Relationship: not yet contacted</span><a href="https://netleasex.com/our-services/gap-financing/co-gp-investment/" target="_blank" rel="noopener">Co-GP investment program →</a></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-head">
+          <div><div class="pname">Woofid Capital</div><div class="partner-roles"><span class="roletag">Co-GP</span></div></div>
+          <span class="badge hard">Could not verify</span>
+        </div>
+        <div class="partner-stats">
+          <div class="partner-stat"><div class="pslbl">Check range</div><div class="psval">Unknown/Verify</div></div>
+          <div class="partner-stat"><div class="pslbl">Governance fit</div><div class="psval">Unknown/Verify</div></div>
+          <div class="partner-stat"><div class="pslbl">Stage appetite</div><div class="psval">Entitlement, Vertical Construction</div></div>
+          <div class="partner-stat"><div class="pslbl">Geography</div><div class="psval">U.S. — verify coverage</div></div>
+        </div>
+        <div class="partner-support">
+          <span class="support-tag">Unverified</span>
+        </div>
+        <div class="partner-fit">
+          <p><b>Data-quality flag</b>The Notion record's own source URL (woofid.capital/partnership) failed to resolve this session, and a live search turned up no independent trace of a firm by this name. This may just be a very new or thinly-online shop, but it could also be a bad record — flagging rather than presenting it as a real lead. Worth a direct check before Veritas spends any relationship-building time here; I haven't edited the Notion record.</p>
+        </div>
+        <div class="partner-foot"><span>Relationship: Research</span><span>No working source link</span></div>
+      </div>
+    </div>
+
+    <div class="disclaimer" style="margin-top:20px;">
+      <b>Read this pipeline as a starting point, not a shortlist:</b> every partner above is Tier C (Research) or freshly sourced and unqualified — none has been contacted, none has confirmed current appetite, check size, or terms with Veritas directly. The value here is coverage of the five partner-role types and a live-verified starting point for outreach, not a vetted bench. Treat SP-1 through SP-4 as the qualification checklist to run on each one (and on any new name) before it moves past "Research" in the Relationship Stage field.
     </div>
   </section>
 
