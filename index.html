@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US Commercial Mortgage — Underwriting &amp; Deal Structuring Framework</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root{
+    --ink:#16202B; --paper:#ECEFE8; --surface:#FFFFFF;
+    --line:#D3D8CC; --line-strong:#AEB6A4;
+    --blue:#1E4B79; --blue-tint:#E3EBF2; --blue-deep:#123350;
+    --amber:#8A5F16; --amber-tint:#F6ECD8;
+    --green:#2E6A47; --green-tint:#E1EFE6;
+    --rust:#8C3324; --rust-tint:#F3E2DE;
+    --muted:#5B6670;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif;
+    background-image:linear-gradient(var(--line) 1px, transparent 1px),linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:28px 28px; background-position:-1px -1px;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  h1,h2,h3{font-family:'Space Grotesk';margin:0;}
+  a{color:inherit;}
+
+  .proto-banner{background:var(--blue-deep);color:#fff;font-family:'IBM Plex Mono';font-size:11.5px;padding:10px 32px;letter-spacing:0.02em;text-align:center;}
+  .proto-banner b{text-decoration:underline;}
+
+  nav.sheetnav{position:sticky;top:0;z-index:50;background:rgba(236,239,232,0.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line-strong);}
+  nav.sheetnav .navrow{max-width:1180px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:0;overflow-x:auto;}
+  nav.sheetnav a{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:0.03em;color:var(--muted);text-decoration:none;white-space:nowrap;padding:13px 14px;border-bottom:2px solid transparent;text-transform:uppercase;cursor:pointer;}
+  nav.sheetnav a:hover{color:var(--ink);border-bottom-color:var(--line-strong);}
+
+  .sheet-label{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:0.08em;color:var(--blue);text-transform:uppercase;margin-bottom:14px;}
+  .sheet-label .num{border:1px solid var(--blue);padding:2px 7px;background:var(--blue-tint);}
+  section{padding:72px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{max-width:720px;margin-bottom:40px;}
+  .section-head h2{font-size:28px;font-weight:700;letter-spacing:-0.01em;line-height:1.15;}
+  .section-head p{font-family:'Inter';font-size:15px;color:var(--muted);margin-top:12px;line-height:1.6;}
+
+  .hero{padding:60px 0 80px;border-bottom:2px solid var(--ink);}
+  .hero-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px;flex-wrap:wrap;gap:20px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{width:36px;height:36px;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;font-size:15px;background:var(--ink);color:var(--paper);}
+  .brand-name{font-family:'Space Grotesk';font-weight:700;font-size:19px;}
+  .brand-sub{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;margin-top:1px;}
+  .phase-stamp{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:0.06em;border:2px solid var(--blue);color:var(--blue);padding:8px 14px;text-transform:uppercase;transform:rotate(2deg);}
+  .hero h1{font-size:46px;line-height:1.08;font-weight:700;letter-spacing:-0.02em;max-width:840px;}
+  .hero h1 em{font-style:normal;color:var(--blue);}
+  .hero-sub{font-size:16.5px;color:var(--muted);max-width:660px;margin-top:20px;line-height:1.6;}
+  .hero-cta-row{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
+  .btn{font-family:'IBM Plex Mono';font-size:12.5px;letter-spacing:0.03em;padding:13px 24px;text-transform:uppercase;cursor:pointer;border:none;text-decoration:none;display:inline-block;}
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-primary:hover{background:var(--blue-deep);}
+  .btn-ghost{background:transparent;border:1px solid var(--line-strong);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--ink);}
+
+  .hero-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-strong);margin-top:48px;border:1px solid var(--line-strong);}
+  .hero-metric{background:var(--surface);padding:20px 18px;}
+  .hero-metric .lbl{font-family:'IBM Plex Mono';font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:9px;}
+  .hero-metric .val{font-family:'Space Grotesk';font-weight:700;font-size:23px;}
+  .hero-metric .val.blue{color:var(--blue);}
+  .hero-metric .sub{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--muted);margin-top:6px;}
+
+  .statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:8px;}
+  .statgrid.three{grid-template-columns:repeat(3,1fr);}
+  .statcard{background:var(--surface);border:1px solid var(--line-strong);padding:18px 20px;}
+  .statcard .lbl{font-family:'IBM Plex Mono';font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:8px;}
+  .statcard .val{font-family:'Space Grotesk';font-weight:700;font-size:20px;}
+  .statcard .formula{font-family:'IBM Plex Mono';font-size:11px;color:var(--blue);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line-strong);}
+
+  table.data{width:100%;border-collapse:collapse;font-family:'IBM Plex Mono';font-size:12.5px;}
+  table.data th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);font-weight:500;padding:0 12px 9px;border-bottom:1px solid var(--line-strong);}
+  table.data td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  table.data tr:last-child td{border-bottom:none;}
+  table.data td.num{text-align:right;white-space:nowrap;}
+  table.data th.num{text-align:right;}
+  table.data tr.total td{font-weight:600;border-top:1px solid var(--ink);background:var(--blue-tint);}
+  table.data a{color:var(--blue);text-decoration:underline;text-decoration-style:dotted;}
+  table.data a:hover{color:var(--blue-deep);}
+
+  .badge{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;padding:2px 7px;border:1px solid transparent;font-family:'IBM Plex Mono';white-space:nowrap;}
+  .badge.hard{background:var(--rust-tint);color:var(--rust);border-color:var(--rust);}
+  .badge.soft{background:var(--amber-tint);color:var(--amber);border-color:var(--amber);}
+  .badge.approve{background:var(--green-tint);color:var(--green);border-color:var(--green);}
+  .badge.refer{background:var(--amber-tint);color:var(--amber);border-color:var(--amber);}
+  .badge.decline{background:var(--rust-tint);color:var(--rust);border-color:var(--rust);}
+  .code{font-family:'IBM Plex Mono';font-weight:600;color:var(--blue);}
+
+  .tracker{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);}
+  .tracker-item{background:var(--surface);padding:24px 24px;}
+  .tracker-item .status{font-family:'IBM Plex Mono';font-size:10.5px;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;color:var(--blue);}
+  .tracker-item h3{font-size:16px;margin-bottom:9px;}
+  .tracker-item p{font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 12px;}
+  .tracker-item .unlocks{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--ink);padding-top:11px;border-top:1px dashed var(--line-strong);}
+  .tracker-item .unlocks b{color:var(--blue);}
+
+  .decision-band{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);margin-top:8px;}
+  .decision-col{background:var(--surface);padding:24px;}
+  .decision-col h3{font-family:'IBM Plex Mono';font-size:13px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid;}
+  .decision-col.approve h3{color:var(--green);border-color:var(--green);}
+  .decision-col.refer h3{color:var(--amber);border-color:var(--amber);}
+  .decision-col.decline h3{color:var(--rust);border-color:var(--rust);}
+  .decision-col ul{margin:0;padding-left:18px;font-size:13px;line-height:1.7;color:var(--ink);}
+  .decision-col .note{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line-strong);font-family:'IBM Plex Mono';font-size:11px;color:var(--muted);line-height:1.6;}
+
+  .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);}
+  .flow-col{background:var(--surface);padding:24px;}
+  .flow-col .flow-lbl{font-family:'IBM Plex Mono';font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:var(--blue);margin-bottom:12px;}
+  .flow-col ul{margin:0;padding-left:18px;font-size:13px;line-height:1.75;color:var(--ink);}
+
+  .risklist{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);}
+  .riskitem{background:var(--surface);padding:20px 22px;}
+  .riskitem .rtitle{font-family:'IBM Plex Mono';font-size:11.5px;color:var(--rust);letter-spacing:0.03em;text-transform:uppercase;margin-bottom:7px;}
+  .riskitem p{font-size:13px;color:var(--muted);margin:0;line-height:1.6;}
+
+  .disclaimer{background:var(--surface);border:1px solid var(--line-strong);padding:26px 28px;font-family:'IBM Plex Mono';font-size:11px;color:var(--muted);line-height:1.7;}
+  .disclaimer b{color:var(--ink);}
+  footer.pagefoot{padding:44px 0 64px;font-family:'IBM Plex Mono';font-size:11.5px;color:var(--muted);}
+  footer.pagefoot .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:20px;border-top:1px solid var(--line-strong);}
+
+  @media (max-width:820px){
+    .hero h1{font-size:30px;}
+    .hero-metrics{grid-template-columns:repeat(2,1fr);}
+    .statgrid, .statgrid.three{grid-template-columns:repeat(2,1fr);}
+    .tracker, .decision-band, .flow{grid-template-columns:1fr;}
+    .risklist{grid-template-columns:1fr;}
+    table.data{font-size:11px;}
+  }
+
+  /* ============ CALCULATOR ============ */
+  .calc-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:24px;align-items:start;}
+  .calc-form{background:var(--surface);border:1px solid var(--line-strong);padding:26px 28px;}
+  .calc-fieldset{border:none;padding:0;margin:0 0 22px;min-width:0;}
+  .calc-fieldset:last-of-type{margin-bottom:0;}
+  .calc-fieldset legend{font-family:'IBM Plex Mono';font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--blue);padding:0 0 10px;width:100%;border-bottom:1px solid var(--line);margin-bottom:14px;}
+  .calc-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+  .calc-field{display:flex;flex-direction:column;gap:6px;min-width:0;}
+  .calc-field label{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--muted);letter-spacing:0.02em;}
+  .calc-field input, .calc-field select{font-family:'Inter';font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line-strong);padding:9px 10px;width:100%;}
+  .calc-field input:focus, .calc-field select:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue);}
+  .calc-hint{font-family:'IBM Plex Mono';font-size:9.5px;color:var(--muted);}
+  .calc-submit{width:100%;margin-top:4px;text-align:center;}
+
+  .calc-results{position:sticky;top:66px;}
+  .result-card{background:var(--surface);border:1px solid var(--line-strong);padding:22px 24px;margin-bottom:14px;}
+  .decision-badge{padding:18px 22px;border:2px solid var(--line-strong);margin-bottom:14px;}
+  .decision-badge.approve{border-color:var(--green);background:var(--green-tint);}
+  .decision-badge.refer{border-color:var(--amber);background:var(--amber-tint);}
+  .decision-badge.decline{border-color:var(--rust);background:var(--rust-tint);}
+  .decision-badge .dtext{font-family:'Space Grotesk';font-weight:700;font-size:22px;}
+  .decision-badge.approve .dtext{color:var(--green);}
+  .decision-badge.refer .dtext{color:var(--amber);}
+  .decision-badge.decline .dtext{color:var(--rust);}
+  .decision-badge .dsub{font-family:'IBM Plex Mono';font-size:11px;color:var(--muted);margin-top:4px;}
+
+  .ratio-readout{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);}
+  .ratio-cell{background:var(--surface);padding:14px 16px;}
+  .ratio-cell .rlbl{font-family:'IBM Plex Mono';font-size:9.5px;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:6px;}
+  .ratio-cell .rval{font-family:'Space Grotesk';font-weight:700;font-size:19px;font-variant-numeric:tabular-nums;}
+  .ratio-cell .rval.pass{color:var(--green);}
+  .ratio-cell .rval.warn{color:var(--amber);}
+  .ratio-cell .rval.fail{color:var(--rust);}
+
+  .flag-list{list-style:none;margin:0;padding:0;}
+  .flag-list li{font-family:'IBM Plex Mono';font-size:11.5px;padding:9px 0;border-top:1px dashed var(--line-strong);line-height:1.5;}
+  .flag-list li:first-child{border-top:none;padding-top:0;}
+  .flag-list li.warn{color:var(--amber);}
+  .flag-list li.fail{color:var(--rust);}
+  .flag-list li.pass{color:var(--green);}
+
+  .match-list{display:flex;flex-direction:column;gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);}
+  .match-item{background:var(--surface);padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+  .match-item .mname{font-family:'Space Grotesk';font-weight:600;font-size:13.5px;}
+  .match-item .mmeta{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--muted);margin-top:2px;}
+  .match-item a{font-family:'IBM Plex Mono';font-size:11px;color:var(--blue);text-decoration:underline;text-decoration-style:dotted;white-space:nowrap;}
+  .calc-empty{font-family:'IBM Plex Mono';font-size:12px;color:var(--muted);text-align:center;padding:28px 16px;margin:0;}
+  .result-card h3{font-family:'Space Grotesk';font-size:14px;margin:0 0 12px;}
+
+  @media (max-width:900px){
+    .calc-grid{grid-template-columns:1fr;}
+    .calc-results{position:static;}
+  }
+  @media (max-width:520px){
+    .calc-row{grid-template-columns:1fr;}
+    .ratio-readout{grid-template-columns:1fr;}
+  }
+
+  .search-box{background:var(--surface);border:1px solid var(--line-strong);padding:18px 20px;margin-bottom:1px;}
+  .search-box input[type="text"]{font-family:'IBM Plex Mono';font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line-strong);padding:11px 12px;width:100%;box-sizing:border-box;}
+  .search-box input[type="text"]:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue);}
+  .search-box input[type="text"]::placeholder{color:var(--muted);}
+  .search-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+  .chip{font-family:'IBM Plex Mono';font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;background:var(--blue-tint);color:var(--blue);border:1px solid var(--blue);padding:6px 10px;cursor:pointer;transition:background 0.12s,color 0.12s;}
+  .chip:hover{background:var(--blue);color:var(--surface);}
+  .chip:last-child{background:transparent;color:var(--muted);border-color:var(--line-strong);}
+  .chip:last-child:hover{background:var(--muted);color:var(--surface);border-color:var(--muted);}
+  .search-toggle{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono';font-size:11px;color:var(--muted);margin-top:14px;cursor:pointer;}
+  .search-toggle input{accent-color:var(--blue);width:14px;height:14px;cursor:pointer;}
+  #searchResults:empty{display:none;}
+  #searchResults .calc-empty{background:var(--surface);border:1px solid var(--line-strong);border-top:none;}
+
+  .scenario-callout{background:var(--blue-tint);border:1px solid var(--blue);border-top:none;padding:20px 22px;}
+  .scenario-head{font-family:'Space Grotesk';font-weight:700;font-size:15px;color:var(--blue-deep);margin-bottom:10px;}
+  .scenario-callout p{font-family:'Inter';font-size:13px;line-height:1.6;color:var(--ink);margin:0 0 14px;}
+  .scenario-callout .match-list{background:var(--line-strong);}
+  .scenario-callout .match-item{background:var(--surface);}
+</style>
+</head>
+<body>
+
+<div class="proto-banner"><b>INTERNAL FRAMEWORK.</b> Ratio thresholds are underwriting starting points, not commitments — every deal is sized against the actual lender's term sheet. Not legal or credit advice; security documents require counsel review.</div>
+
+<nav class="sheetnav">
+  <div class="navrow">
+    <a data-scroll="calculator">Qualify a Deal</a>
+    <a data-scroll="stack">Capital Stack Map</a>
+    <a data-scroll="lenders">US Lender Shortlist</a>
+    <a data-scroll="lendersearch">Lender Search</a>
+    <a data-scroll="ratios">Ratio Engine</a>
+    <a data-scroll="structuring">Loan Structuring</a>
+    <a data-scroll="holdcodes">Hold Codes</a>
+    <a data-scroll="opcodes">Op Codes</a>
+    <a data-scroll="memo">Underwriting Memo</a>
+    <a data-scroll="decision">Decision Engine</a>
+    <a data-scroll="system">System Design</a>
+    <a data-scroll="basis">Regulatory Basis</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-top">
+      <div class="brand">
+        <div class="brand-mark">VC</div>
+        <div>
+          <div class="brand-name">Veritas Capital</div>
+          <div class="brand-sub">Underwriting &amp; Deal Structuring Framework</div>
+        </div>
+      </div>
+      <div class="phase-stamp">US Commercial Mortgage — v1</div>
+    </div>
+
+    <h1>Refactored for <em>real estate debt</em>, not general business lending.</h1>
+    <p class="hero-sub">This is the Canadian business-lending hold-code / op-code framework you pasted, rebuilt from the ground up for how US commercial mortgage debt actually gets underwritten and administered — property-cash-flow tests (DSCR, Debt Yield) instead of business-cash-flow tests (EBITDA/FCCR), UCC fixture filings instead of PPSA, ALTA/title/Phase I instead of GSA, and a capital stack (land/A&amp;D → construction → bridge → permanent/agency) instead of term-loan/op-line. It's built to plug directly into the Lender Matrix and capital-stack tooling already running in the Veritas Capital prototype.</p>
+
+    <div class="hero-cta-row">
+      <a data-scroll="calculator" class="btn btn-primary">Qualify a deal →</a>
+      <a data-scroll="system" class="btn btn-ghost">See how it plugs into your tool</a>
+    </div>
+
+    <div class="hero-metrics">
+      <div class="hero-metric"><div class="lbl">DSCR floor (perm)</div><div class="val blue">1.25x</div><div class="sub">1.20x agency affordable / bridge as-stabilized</div></div>
+      <div class="hero-metric"><div class="lbl">Debt Yield floor</div><div class="val blue">9–10%</div><div class="sub">Rate/cap-rate-risk backstop</div></div>
+      <div class="hero-metric"><div class="lbl">LTV / LTC ceiling</div><div class="val blue">65–75%</div><div class="sub">Perm 65–70% · Construction 70–75%</div></div>
+      <div class="hero-metric"><div class="lbl">Rate stress</div><div class="val blue">+200 bps</div><div class="sub">Underwriting rate over note rate</div></div>
+    </div>
+  </section>
+
+  <!-- ============ CALCULATOR ============ -->
+  <section id="calculator">
+    <div class="sheet-label"><span class="num">C-0</span> Deal Qualification Calculator</div>
+    <div class="section-head">
+      <h2>Run a deal through the ratio and decision engine live.</h2>
+      <p>Enter the deal terms below — this runs the exact DSCR / Debt Yield / LTV-LTC / stress-test logic from C-2.0 and the Approve / Refer / Decline thresholds from C-7.0, then filters the C-1.5 Tier A lender shortlist by stage and asset class. Everything computes in your browser — nothing here is saved or sent anywhere, and it's a screening tool, not a submission.</p>
+    </div>
+    <div class="calc-grid">
+      <form class="calc-form" id="dealForm">
+        <fieldset class="calc-fieldset">
+          <legend>Deal Basics</legend>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="stage">Project stage</label>
+              <select id="stage" required>
+                <option>Raw Land</option>
+                <option>Entitlement / Pre-development</option>
+                <option>Horizontal Development</option>
+                <option selected>Vertical Construction</option>
+                <option>Bridge / Lease-up</option>
+                <option>Stabilized / Permanent</option>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label for="assetClass">Asset class</label>
+              <select id="assetClass" required>
+                <option selected>Multifamily</option>
+                <option>SFR / BTR</option>
+                <option>Industrial</option>
+                <option>Retail</option>
+                <option>Mixed-Use</option>
+                <option>Hospitality</option>
+                <option>Office</option>
+                <option>Self Storage</option>
+                <option>Land / Lots</option>
+                <option>Commercial</option>
+              </select>
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="loanAmt">Requested loan amount ($)</label>
+              <input type="number" id="loanAmt" min="0" step="1000" value="15000000" required>
+            </div>
+            <div class="calc-field">
+              <label for="recoursePref">Recourse preference</label>
+              <select id="recoursePref">
+                <option value="any">No preference</option>
+                <option value="nonrecourse">Non-recourse required</option>
+                <option value="recourse">Recourse acceptable</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="calc-fieldset">
+          <legend>Value &amp; Cost</legend>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="projectCost">Total project cost ($)</label>
+              <input type="number" id="projectCost" min="0" step="1000" value="21000000">
+              <span class="calc-hint">Drives LTC — used for Raw Land / Horizontal / Vertical Construction stages</span>
+            </div>
+            <div class="calc-field">
+              <label for="propValue">Appraised / as-stabilized value ($)</label>
+              <input type="number" id="propValue" min="0" step="1000" value="23000000">
+              <span class="calc-hint">Drives LTV — used for Bridge / Stabilized stages</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="calc-fieldset">
+          <legend>Cash Flow &amp; Rate</legend>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="noi">Annual NOI ($)</label>
+              <input type="number" id="noi" min="0" step="1000" value="1900000" required>
+            </div>
+            <div class="calc-field">
+              <label for="rate">Interest rate (%)</label>
+              <input type="number" id="rate" min="0" step="0.05" value="8.25" required>
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="amort">Amortization (years, 0 = interest-only)</label>
+              <input type="number" id="amort" min="0" step="1" value="0">
+            </div>
+            <div class="calc-field">
+              <label for="liquidity">Sponsor post-closing liquidity ($)</label>
+              <input type="number" id="liquidity" min="0" step="1000" value="2000000">
+            </div>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary calc-submit">Run Qualification →</button>
+      </form>
+
+      <div class="calc-results">
+        <div id="calcOutput">
+          <div class="result-card"><p class="calc-empty">Enter deal terms and run the calculation to see the ratio readout, the Approve / Refer / Decline call, and a matched Tier A lender shortlist.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAPITAL STACK MAP ============ -->
+  <section id="stack">
+    <div class="sheet-label"><span class="num">C-1.0</span> Capital Stack Map</div>
+    <div class="section-head">
+      <h2>Where each facility sits, and which lender tier fits it.</h2>
+      <p>The original framework had one bucket ("business loans / op lines"). CRE debt has a stage-dependent stack — this now maps onto the actual <b>Lender Matrix Pro — US &amp; Canada</b> Notion database (82 total sources; 65 tagged US or US &amp; Canada; 19 verified Tier A), not a placeholder list.</p>
+    </div>
+    <table class="data">
+      <thead><tr><th>Stage</th><th>Facility</th><th>Typical LTC / LTV</th><th>Typical rate basis</th><th>Recourse</th><th>Real Tier A lenders (US)</th></tr></thead>
+      <tbody>
+        <tr><td>Land / A&amp;D</td><td>Land acquisition &amp; development</td><td class="num">50–65% LTV (raw)</td><td class="num">Fixed, wide spread</td><td>Recourse</td><td>Builder Finance, Enact Partners, Ready Capital</td></tr>
+        <tr><td>Vertical construction</td><td>Construction loan</td><td class="num">65–75% LTC</td><td class="num">Floating, SOFR + spread</td><td>Recourse to completion guaranty</td><td>Ready Capital, Parkview Financial, Madison Realty Capital, Thorofare Capital</td></tr>
+        <tr><td>Stabilization</td><td>Bridge / mini-perm</td><td class="num">65–75% LTV (as-stabilized)</td><td class="num">Floating, SOFR + spread</td><td>Non-recourse w/ carve-outs</td><td>Arbor Realty Trust, ACORE Capital, Bloomfield Capital, Tremont Realty Capital</td></tr>
+        <tr><td>Stabilized</td><td>Permanent — balance sheet / life co</td><td class="num">55–65% LTV</td><td class="num">Fixed, spread to Treasury</td><td>Non-recourse w/ carve-outs</td><td><span class="badge soft">Gap</span> only Tier B/C in file (Greystone CMBS) — needs sourcing</td></tr>
+        <tr><td>Stabilized (multifamily)</td><td>Agency — Fannie DUS / Freddie Optigo</td><td class="num">65–80% LTV</td><td class="num">Fixed, spread to Treasury/SOFR</td><td>Non-recourse w/ carve-outs</td><td><span class="badge soft">Gap</span> no DUS/Optigo shop in the matrix yet</td></tr>
+        <tr><td>Stabilized (larger)</td><td>CMBS conduit</td><td class="num">up to 75% LTV</td><td class="num">Fixed, spread to swaps</td><td>Non-recourse w/ carve-outs</td><td>Greystone CMBS <span class="badge soft">Tier B</span></td></tr>
+        <tr><td>Gap layer</td><td>Mezzanine / preferred equity</td><td class="num">to 85–90% cumulative</td><td class="num">Fixed or PIK, high coupon</td><td>Recourse to pledge of equity</td><td>ACORE Capital, Bloomfield Capital</td></tr>
+        <tr><td>Owner-occupied commercial</td><td>SBA 504 / 7(a)</td><td class="num">up to 90% LTV</td><td class="num">Fixed (CDC) / variable (bank)</td><td>Personal guaranty</td><td><span class="badge soft">Gap</span> no CDC/SBA shop in the matrix yet</td></tr>
+      </tbody>
+    </table>
+    <p style="font-family:'IBM Plex Mono';font-size:11px;color:var(--amber);margin-top:14px;">⚠ The matrix is a private-credit / hard-money-heavy database — it's deep on land, construction and bridge, and currently thin on permanent balance-sheet, agency multifamily, and SBA. That's a real sourcing gap, not a display issue — worth adding to the Notion resource roadmap.</p>
+  </section>
+
+  <!-- ============ US LENDER SHORTLIST ============ -->
+  <section id="lenders">
+    <div class="sheet-label"><span class="num">C-1.5</span> US Lender Shortlist — Tier A (Verified)</div>
+    <div class="section-head">
+      <h2>All 19 Tier A US entries from the live Notion database.</h2>
+      <p>Pulled directly from <b>Lender Matrix Pro — US &amp; Canada</b> (Veritas Capital Markets resource), filtered to Country = US and Verification Tier = A — current criteria supported by the working research. This is the "Lender shortlist" output the Decision Engine (C-7.0) and System Design (C-8.0) sections are built to generate automatically. Geography note for Veritas: most entries are nationwide or unrestricted; <b>Socotra Capital is Western-U.S.-focused</b> and would need geography verification before use on a Missouri deal. The <b>Program</b> column links to the specific loan-program page found live via Exa/Tavily search, not the Notion record's homepage URL — several corrected or upgraded from a bare homepage to the actual program page.</p>
+    </div>
+    <table class="data">
+      <thead><tr><th>Lender</th><th>Capital Layer(s)</th><th>Project Stage(s)</th><th>Asset Classes</th><th class="num">Loan Size</th><th>Recourse</th><th>Program</th></tr></thead>
+      <tbody>
+        <tr><td>ACORE Capital</td><td>Senior, Bridge, Construction, Mezz, Pref Equity</td><td>Vertical Construction, Bridge/Lease-up</td><td>Multifamily, Commercial</td><td class="num">$30–300M</td><td>Case-by-case</td><td><a href="https://acorecapital.com/loan-parameters-landing-page" target="_blank" rel="noopener">Loan parameters →</a></td></tr>
+        <tr><td>Anchor Loans</td><td>Senior, Bridge, Construction, Perm</td><td>Vertical Construction, Bridge/Lease-up, Stabilized/Perm</td><td>Multifamily, SFR/BTR</td><td class="num">to $20M</td><td>Unknown/Verify</td><td><a href="https://www.anchorloans.com/faqs" target="_blank" rel="noopener">Ground-up construction FAQ →</a></td></tr>
+        <tr><td>Arbor Realty Trust</td><td>Senior, Bridge, Pref Equity</td><td>Bridge/Lease-up</td><td>Multifamily, Commercial</td><td class="num">$10–100M</td><td>Case-by-case</td><td><a href="https://arbor.com/bridge/" target="_blank" rel="noopener">Bridge program →</a></td></tr>
+        <tr><td>Bloomfield Capital</td><td>Senior, Bridge, Mezz, Pref Equity</td><td>Bridge/Lease-up</td><td>Hospitality, Retail, Commercial</td><td class="num">$3–30M</td><td>Case-by-case</td><td><a href="https://bloomfieldcapital.com/equity" target="_blank" rel="noopener">Equity/mezz strategy →</a></td></tr>
+        <tr><td>Builder Finance</td><td>Construction, Land/A&amp;D, Horizontal Dev</td><td>Raw Land, Horizontal Dev, Vertical Construction</td><td>SFR/BTR, Land/Lots</td><td class="num">—</td><td>Unknown/Verify</td><td><a href="https://www.builderfinance.com/land" target="_blank" rel="noopener">Land program →</a></td></tr>
+        <tr><td>Enact Partners</td><td>Construction, Land/A&amp;D, Horizontal Dev</td><td>Raw Land, Horizontal Dev, Vertical Construction</td><td>SFR/BTR, Land/Lots</td><td class="num">—</td><td>Unknown/Verify</td><td><a href="https://enactpartners.com/how-horizontal-construction-loans-bridge-the-gap-from/" target="_blank" rel="noopener">Horizontal construction →</a></td></tr>
+        <tr><td>Kiavi</td><td>Senior, Bridge, Construction, Perm</td><td>Vertical Construction, Bridge/Lease-up, Stabilized/Perm</td><td>SFR/BTR</td><td class="num">$150K–$10M</td><td>Unknown/Verify</td><td><a href="https://www.kiavi.com/loans/new-construction-infill" target="_blank" rel="noopener">New construction/infill →</a></td></tr>
+        <tr><td>LendingOne</td><td>Senior, Bridge, Construction, Perm</td><td>Vertical Construction, Bridge/Lease-up, Stabilized/Perm</td><td>SFR/BTR</td><td class="num">$200K–$2M</td><td>Unknown/Verify</td><td><a href="https://lendingone.com/loan-types/new-construction-loans" target="_blank" rel="noopener">New construction →</a></td></tr>
+        <tr><td>Lima One Capital</td><td>Senior, Bridge, Construction, Perm</td><td>Vertical Construction, Bridge/Lease-up, Stabilized/Perm</td><td>Multifamily, SFR/BTR</td><td class="num">to $20M</td><td>Unknown/Verify</td><td><a href="https://www.limaone.com/new-construction-loans" target="_blank" rel="noopener">New construction →</a></td></tr>
+        <tr><td>Madison Realty Capital</td><td>Senior, Bridge, Construction</td><td>Vertical Construction, Bridge/Lease-up</td><td>Multifamily, Commercial</td><td class="num">—</td><td>Case-by-case</td><td><a href="https://www.madisonrealtycapital.com/financing" target="_blank" rel="noopener">Financing inquiry →</a></td></tr>
+        <tr><td>Parkview Financial</td><td>Senior, Bridge, Construction</td><td>Vertical Construction, Bridge/Lease-up</td><td>Multifamily, Industrial, Retail, Mixed-Use</td><td class="num">$5–200M</td><td>Case-by-case</td><td><a href="https://www.parkviewfinancial.com/lending" target="_blank" rel="noopener">Lending program →</a></td></tr>
+        <tr><td>RCN Capital</td><td>Senior, Bridge, Construction, Perm</td><td>Vertical Construction, Bridge/Lease-up, Stabilized/Perm</td><td>SFR/BTR</td><td class="num">$100K–$2M</td><td>Unknown/Verify</td><td><a href="https://rcncapital.com/loan-programs" target="_blank" rel="noopener">Loan programs →</a></td></tr>
+        <tr><td>Ready Capital</td><td>Senior, Bridge, Construction, Land/A&amp;D, Horizontal Dev</td><td>Raw Land, Horizontal Dev, Vertical Construction, Bridge/Lease-up</td><td>Multifamily, SFR/BTR, Industrial, Land/Lots, Commercial</td><td class="num">—</td><td>Case-by-case</td><td><a href="https://readycapital.com/loan-programs/commercial-real-estate/construction-loans/" target="_blank" rel="noopener">Construction loans →</a></td></tr>
+        <tr><td>Socotra Capital</td><td>Senior, Bridge, Construction</td><td>Vertical Construction, Bridge/Lease-up</td><td>Commercial</td><td class="num">$100K–$20M</td><td>Unknown/Verify</td><td><a href="https://www.socotracapital.com/loan-options/bridge-loans" target="_blank" rel="noopener">Bridge to perm →</a> <span class="badge soft">Western US</span></td></tr>
+        <tr><td>Stormfield Capital</td><td>Senior, Bridge</td><td>Bridge/Lease-up</td><td>SFR/BTR</td><td class="num">$1–30M</td><td>Unknown/Verify</td><td><a href="https://stormfieldcapital.com/loan-programs/cre-product-overview" target="_blank" rel="noopener">CRE bridge overview →</a></td></tr>
+        <tr><td>Thorofare Capital</td><td>Senior, Bridge, Construction</td><td>Vertical Construction, Bridge/Lease-up</td><td>Multifamily, Industrial, Retail, Hospitality, Office, Self Storage, Commercial</td><td class="num">$15–100M</td><td>Case-by-case</td><td><a href="https://www.thorofarecapital.com/strategy" target="_blank" rel="noopener">Loan strategy →</a></td></tr>
+        <tr><td>Tremont Realty Capital</td><td>Senior, Bridge</td><td>Bridge/Lease-up</td><td>Commercial</td><td class="num">—</td><td>Case-by-case</td><td><a href="https://www.tremontcapital.com/home/default.aspx" target="_blank" rel="noopener">Program overview →</a></td></tr>
+        <tr><td>Wilshire Quinn Capital</td><td>Senior, Bridge</td><td>Bridge/Lease-up</td><td>Commercial</td><td class="num">$500K–$20M</td><td>Unknown/Verify</td><td><a href="https://wilshirequinn.com/bridge-loan-program" target="_blank" rel="noopener">Bridge loan program →</a></td></tr>
+        <tr><td>Yieldi</td><td>Senior, Bridge, Construction</td><td>Vertical Construction, Bridge/Lease-up</td><td>Commercial</td><td class="num">$350K–$50M</td><td>Unknown/Verify</td><td><a href="https://yieldi.com/hard-money-loan-programs/" target="_blank" rel="noopener">Loan programs →</a> <span class="badge soft">Notion URL was 3rd-party</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-family:'IBM Plex Mono';font-size:11px;color:var(--muted);margin-top:14px;">46 additional US entries sit at Tier B (active — verify exact box) or Watchlist in the same database, including Kennedy Funding, Greystone CMBS, HALL Structured Finance, MidPoint Capital Partners, and Buchanan Street Partners (flagged in Notion to verify Midwest/Missouri coverage). Loan-size ranges above reflect the specific program page, not always the Notion record's Min/Max Loan fields — re-verify both before submission, per the database's own operating rule.</p>
+  </section>
+
+  <!-- ============ LENDER SEARCH ============ -->
+  <section id="lendersearch">
+    <div class="sheet-label"><span class="num">C-1.6</span> Lender Search</div>
+    <div class="section-head">
+      <h2>Search the matrix by keyword instead of scrolling tables.</h2>
+      <p>Type any mix of stage, asset class, structure or geography — it matches against lender name, capital layer, project stage, asset classes, geography and the Notion research notes. Built for exactly the kind of scenario that doesn't fit a clean dropdown, like the one below.</p>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="lenderSearch" placeholder="e.g. agricultural land rezoning horizontal development multifamily" autocomplete="off">
+      <div class="search-chips">
+        <button type="button" class="chip" data-q="agricultural land rezoning horizontal development">Agricultural → rezoning → horizontal dev</button>
+        <button type="button" class="chip" data-q="raw land entitlement">Raw land / entitlement</button>
+        <button type="button" class="chip" data-q="multifamily construction non-recourse">Multifamily construction, non-recourse</button>
+        <button type="button" class="chip" data-q="">Clear</button>
+      </div>
+      <label class="search-toggle"><input type="checkbox" id="includeTierB"> Include Tier B (active — verify exact box), not just Tier A</label>
+    </div>
+
+    <div id="searchResults" class="match-list"></div>
+
+    <div class="scenario-callout">
+      <div class="scenario-head">Scenario: agricultural land, needs rezoning, then horizontal development to commercial / residential / multifamily</div>
+      <p>This is a harder screen than "raw land" generally — most land/A&amp;D lenders want either site control plus a credible entitlement timeline, or land already zoned for the target use. Agricultural zoning pre-rezoning narrows the field further; confirm each lender's entitlement-risk appetite directly rather than assuming raw-land terms apply. That confirmation <em>is</em> hold codes <span class="code">HC-04</span> (zoning/entitlement) and <span class="code">HP-04</span> (permits) — this is exactly the condition they're built to test before closing. The seven US names in the database that explicitly underwrite land + horizontal development:</p>
+      <div class="match-list">
+        <div class="match-item"><div><div class="mname">Builder Finance <span class="badge approve">Tier A</span></div><div class="mmeta">Land/A&amp;D, Horizontal Dev, Construction · SFR/BTR, Land/Lots · U.S.</div></div><a href="https://www.builderfinance.com/land" target="_blank" rel="noopener">Land program →</a></div>
+        <div class="match-item"><div><div class="mname">Enact Partners <span class="badge approve">Tier A</span></div><div class="mmeta">Land/A&amp;D, Horizontal Dev, Construction · SFR/BTR, Land/Lots · U.S.</div></div><a href="https://enactpartners.com/how-horizontal-construction-loans-bridge-the-gap-from/" target="_blank" rel="noopener">Horizontal construction →</a></div>
+        <div class="match-item"><div><div class="mname">Ready Capital <span class="badge approve">Tier A</span></div><div class="mmeta">Land/A&amp;D, Horizontal Dev, Construction, Bridge · Multifamily, Commercial, Land/Lots · U.S.</div></div><a href="https://readycapital.com/loan-programs/commercial-real-estate/construction-loans/" target="_blank" rel="noopener">Construction loans →</a></div>
+        <div class="match-item"><div><div class="mname">Builders Capital <span class="badge refer">Tier B</span></div><div class="mmeta">AD&amp;C All-in-One — land acquisition + horizontal + vertical in a single loan · SFR/BTR, Land/Lots · U.S.</div></div><a href="https://www.builderscapital.com/product-overview" target="_blank" rel="noopener">Product overview →</a></div>
+        <div class="match-item"><div><div class="mname">Buchanan Street Partners <span class="badge refer">Tier B</span></div><div class="mmeta">Non-recourse on both horizontal/entitled land AND vertical · Multifamily, Retail, Mixed-Use · <span class="badge soft">verify Missouri coverage</span></div></div><a href="https://www.buchananstreet.com/lending" target="_blank" rel="noopener">Lending program →</a></div>
+        <div class="match-item"><div><div class="mname">Kennedy Funding <span class="badge refer">Tier B</span></div><div class="mmeta">Raw/unentitled land specialist, closes in days · Land/Lots, Commercial · U.S. &amp; international</div></div><a href="https://www.kennedyfunding.com/" target="_blank" rel="noopener">Kennedy Funding →</a></div>
+        <div class="match-item"><div><div class="mname">Trez Capital <span class="badge refer">Tier B</span></div><div class="mmeta">Land, land servicing, construction — up to 85% LTC · Multifamily, Mixed-Use, Commercial · U.S. &amp; Canada</div></div><a href="https://www.trezcapital.com/" target="_blank" rel="noopener">Trez Capital →</a></div>
+      </div>
+      <p style="margin-top:14px;">Buchanan Street Partners' own research notes (captured in the Notion database) flag it as one of the only lenders confirmed non-recourse across <em>both</em> horizontal development and vertical construction — but geography is noted as Western-U.S.-focused, so Missouri coverage needs a direct call before it goes on a shortlist. Builders Capital's AD&amp;C All-in-One is the single closest structural match to this scenario: one facility spanning acquisition through vertical.</p>
+    </div>
+  </section>
+
+  <!-- ============ RATIO ENGINE ============ -->
+  <section id="ratios">
+    <div class="sheet-label"><span class="num">C-2.0</span> Ratio Engine — Property Cash Flow, Not Business Cash Flow</div>
+    <div class="section-head">
+      <h2>DSCR and Debt Yield replace EBITDA/FCCR as the core tests.</h2>
+      <p>The original framework's Core 5 (DSCR, FCCR, Debt/EBITDA, Current Ratio, LTV) is a business-lending stack. Real estate debt is underwritten off the <em>property's</em> net operating income, not the sponsor's income statement — the sponsor's financials matter as a secondary guarantor test, not the primary repayment source.</p>
+    </div>
+    <div class="statgrid">
+      <div class="statcard">
+        <div class="lbl">DSCR</div>
+        <div class="val">NOI ÷ Annual Debt Service</div>
+        <div class="formula">Floor: 1.25x perm · 1.20x agency/affordable · test at stressed rate</div>
+      </div>
+      <div class="statcard">
+        <div class="lbl">Debt Yield</div>
+        <div class="val">NOI ÷ Loan Amount</div>
+        <div class="formula">Floor: 9–10% — protects against cap-rate/refi risk, independent of amortization</div>
+      </div>
+      <div class="statcard">
+        <div class="lbl">LTV</div>
+        <div class="val">Loan ÷ Appraised Value</div>
+        <div class="formula">Ceiling: 65–70% perm · higher for agency multifamily</div>
+      </div>
+      <div class="statcard">
+        <div class="lbl">LTC</div>
+        <div class="val">Loan ÷ Total Project Cost</div>
+        <div class="formula">Ceiling: 70–75% construction — this is what your capital-stack "sources = uses" gap tracks</div>
+      </div>
+      <div class="statcard">
+        <div class="lbl">Cap Rate</div>
+        <div class="val">NOI ÷ Value or Price</div>
+        <div class="formula">Compare going-in vs. exit — spread compression is the #1 stress-test variable</div>
+      </div>
+      <div class="statcard">
+        <div class="lbl">Yield on Cost</div>
+        <div class="val">Stabilized NOI ÷ Total Dev. Cost</div>
+        <div class="formula">Development-specific — must clear exit cap rate by 100–200 bps to justify the build</div>
+      </div>
+      <div class="statcard">
+        <div class="lbl">Stressed DSCR</div>
+        <div class="val">NOI ÷ Debt Service at rate +200bps</div>
+        <div class="formula">Underwriting rate, not note rate — the equivalent of the original's "rate sensitivity" test</div>
+      </div>
+      <div class="statcard">
+        <div class="lbl">Sponsor Liquidity</div>
+        <div class="val">Post-closing liquidity ÷ Loan Amount</div>
+        <div class="formula">Floor: ≥10% of loan, plus 12 months' debt service — the guarantor-strength test</div>
+      </div>
+    </div>
+    <p style="font-family:'IBM Plex Mono';font-size:11px;color:var(--amber);margin-top:16px;">⚠ Risk signals: Stressed DSCR &lt; 1.10 · Debt Yield &lt; 8% · LTV/LTC above segment ceiling with no compensating strength · single-tenant or &gt;30% rollover inside loan term · going-in cap rate inside 50bps of market comps (no cushion).</p>
+  </section>
+
+  <!-- ============ LOAN STRUCTURING ============ -->
+  <section id="structuring">
+    <div class="sheet-label"><span class="num">C-3.0</span> Loan Structuring Logic</div>
+    <div class="section-head">
+      <h2>How the mechanics differ by facility type.</h2>
+    </div>
+    <div class="tracker">
+      <div class="tracker-item">
+        <div class="status">Construction</div>
+        <h3>Draw &amp; holdback structure</h3>
+        <p>Funded against a draw schedule tied to % completion, verified by an inspecting engineer report each draw. Retainage held back (typically 5–10%) until substantial completion. Interest reserve funded up front and drawn monthly — not paid out of pocket. Requires a completion guaranty from the sponsor and a cost-to-complete analysis at every draw.</p>
+        <div class="unlocks">Ties to: <b>OP-M1 monitoring code, HC-07 GC contract hold</b></div>
+      </div>
+      <div class="tracker-item">
+        <div class="status">Bridge / Mini-Perm</div>
+        <h3>Floating-rate, covenant-light</h3>
+        <p>Underwrites to as-stabilized NOI, not trailing NOI — the gap between today's cash flow and stabilization is the entire risk. Shorter term (2–3 yrs + extension options tied to DSCR/leasing hurdles). Priced off SOFR; often interest-only for the full term with a maturity/refi assumption baked into the exit.</p>
+        <div class="unlocks">Ties to: <b>OP-R1/OP-R2, HP-03 pre-leasing hold</b></div>
+      </div>
+      <div class="tracker-item">
+        <div class="status">Permanent / Agency</div>
+        <h3>Amortizing, non-recourse</h3>
+        <p>Fixed-rate, 25–30 year amortization, 10-year typical term with a balloon or defeasance/yield-maintenance prepayment penalty. Non-recourse with standard carve-outs (fraud, waste, environmental, voluntary bankruptcy). Replacement reserves and, for office/retail, a TI/LC reserve are escrowed monthly.</p>
+        <div class="unlocks">Ties to: <b>OP-C5 non-recourse, OP-M4 covenant testing</b></div>
+      </div>
+    </div>
+    <p style="font-family:'Inter';font-size:13.5px;color:var(--muted);margin-top:18px;line-height:1.6;">Multi-layer stack: senior debt (bank/agency) + mezzanine or preferred equity (gap financing) + sponsor equity, governed by an <b>intercreditor agreement</b> that sets standstill, cure, and buy-out rights between senior and mezz. This is the direct US equivalent of the original framework's "A lender + B + private" layering — the difference is the intercreditor paper, which PPSA-style GSA layering doesn't require in the same form.</p>
+  </section>
+
+  <!-- ============ HOLD CODES ============ -->
+  <section id="holdcodes">
+    <div class="sheet-label"><span class="num">C-4.0</span> Hold Code Library — Funding Conditions</div>
+    <div class="section-head">
+      <h2>Same five-category structure, refactored for real property collateral.</h2>
+      <p><span class="badge hard">HARD</span> holds block funding outright. <span class="badge soft">SOFT</span> holds let the deal close with a documented exception and a cure deadline.</p>
+    </div>
+
+    <h3 style="font-size:15px;margin:28px 0 12px;">Financial (HF)</h3>
+    <table class="data">
+      <thead><tr><th>Code</th><th>Condition</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">HF-01</td><td>Updated financials, rent roll &amp; trailing-12 operating statement required</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HF-02</td><td>Sources &amp; uses reconciliation — must balance to $0 before funding (mirrors the Balance/Gap check already built into the capital-stack tool)</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HF-03</td><td>Sponsor debt schedule / contingent liability schedule missing</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HF-04</td><td>Pro forma operating budget / stabilized proforma not provided</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HF-05</td><td>Sponsor personal financial statement &amp; liquidity verification (bank/brokerage statements) missing</td><td><span class="badge hard">Hard</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:15px;margin:28px 0 12px;">Legal / Security (HL)</h3>
+    <table class="data">
+      <thead><tr><th>Code</th><th>Condition</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">HL-01</td><td>Mortgage / Deed of Trust not yet recorded (state-dependent instrument)</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HL-02</td><td>Assignment of Leases &amp; Rents not executed</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HL-03</td><td>UCC-1 fixture filing not recorded (US Article 9 equivalent of PPSA)</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HL-04</td><td>Guaranty not executed — payment, completion, and/or carve-out guaranty</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HL-05</td><td>Entity formation docs, good-standing certificate, and org chart incomplete</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HL-06</td><td>SNDA / estoppel certificates outstanding from anchor or major tenants</td><td><span class="badge soft">Soft</span></td></tr>
+        <tr><td class="code">HL-07</td><td>Intercreditor agreement with mezz/pref layer not finalized</td><td><span class="badge hard">Hard</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:15px;margin:28px 0 12px;">Collateral (HC)</h3>
+    <table class="data">
+      <thead><tr><th>Code</th><th>Condition</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">HC-01</td><td>MAI appraisal required (as-is and, for construction, as-complete / as-stabilized)</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HC-02</td><td>Phase I Environmental Site Assessment required (Phase II if a REC is flagged)</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HC-03</td><td>ALTA/NSPS survey and title commitment outstanding</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HC-04</td><td>Zoning / entitlement confirmation and code-compliance letter required</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HC-05</td><td>Property condition report / capital needs assessment (existing assets)</td><td><span class="badge soft">Soft</span></td></tr>
+        <tr><td class="code">HC-06</td><td>Insurance — builder's risk (construction), property/GL, flood cert with lender named loss payee — missing or non-compliant</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HC-07</td><td>GC contract (AIA form), payment &amp; performance bonds not in file</td><td><span class="badge hard">Hard</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:15px;margin:28px 0 12px;">Conditions Precedent (HP)</h3>
+    <table class="data">
+      <thead><tr><th>Code</th><th>Condition</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">HP-01</td><td>No material adverse change since application</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HP-02</td><td>Evidence of equity injection / source of funds not verified</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HP-03</td><td>Minimum pre-leasing threshold not met (executed leases or LOIs)</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HP-04</td><td>Building permits / certificate of occupancy not in hand or on track</td><td><span class="badge hard">Hard</span></td></tr>
+        <tr><td class="code">HP-05</td><td>Satisfactory legal opinion outstanding</td><td><span class="badge hard">Hard</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:15px;margin:28px 0 12px;">Exception / Policy (HX — soft holds)</h3>
+    <table class="data">
+      <thead><tr><th>Code</th><th>Condition</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">HX-01</td><td>Temporary DSCR / Debt Yield exception approved by credit committee</td><td><span class="badge soft">Soft</span></td></tr>
+        <tr><td class="code">HX-02</td><td>Post-closing financials or appraisal update due on a fixed date</td><td><span class="badge soft">Soft</span></td></tr>
+        <tr><td class="code">HX-03</td><td>Concentration or policy-limit override approved</td><td><span class="badge soft">Soft</span></td></tr>
+        <tr><td class="code">HX-04</td><td>Temporary title exception accepted with indemnity / escrow holdback</td><td><span class="badge soft">Soft</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ OP CODES ============ -->
+  <section id="opcodes">
+    <div class="sheet-label"><span class="num">C-5.0</span> Op Code Library — How the Loan Behaves</div>
+    <div class="section-head">
+      <h2>Facility, repayment, collateral, monitoring, and status — CRE-flavored.</h2>
+    </div>
+
+    <table class="data">
+      <thead><tr><th>Category</th><th>Code</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="9" style="font-weight:600;">Facility Type</td><td class="code">OP-LA</td><td>Land / A&amp;D loan</td></tr>
+        <tr><td class="code">OP-CN</td><td>Construction loan</td></tr>
+        <tr><td class="code">OP-BR</td><td>Bridge loan</td></tr>
+        <tr><td class="code">OP-MP</td><td>Mini-perm</td></tr>
+        <tr><td class="code">OP-PM</td><td>Permanent — balance sheet</td></tr>
+        <tr><td class="code">OP-AG</td><td>Agency (Fannie DUS / Freddie Optigo — multifamily)</td></tr>
+        <tr><td class="code">OP-CM</td><td>CMBS conduit</td></tr>
+        <tr><td class="code">OP-MZ</td><td>Mezzanine / preferred equity</td></tr>
+        <tr><td class="code">OP-SBA</td><td>SBA 504 / 7(a) — owner-occupied</td></tr>
+
+        <tr><td rowspan="5" style="font-weight:600;">Repayment Behavior</td><td class="code">OP-R1</td><td>Interest-only, draw-funded (construction)</td></tr>
+        <tr><td class="code">OP-R2</td><td>Interest-only, term (permanent/bridge)</td></tr>
+        <tr><td class="code">OP-R3</td><td>Principal &amp; interest, amortizing</td></tr>
+        <tr><td class="code">OP-R4</td><td>Balloon at maturity</td></tr>
+        <tr><td class="code">OP-R5</td><td>Cash sweep to reserve on trigger event</td></tr>
+
+        <tr><td rowspan="6" style="font-weight:600;">Collateral Logic</td><td class="code">OP-C1</td><td>First mortgage / deed of trust</td></tr>
+        <tr><td class="code">OP-C2</td><td>+ Assignment of leases &amp; rents</td></tr>
+        <tr><td class="code">OP-C3</td><td>+ UCC-1 fixture filing</td></tr>
+        <tr><td class="code">OP-C4</td><td>Cross-collateralized / cross-defaulted (portfolio)</td></tr>
+        <tr><td class="code">OP-C5</td><td>Non-recourse with standard carve-outs</td></tr>
+        <tr><td class="code">OP-C6</td><td>Full recourse</td></tr>
+
+        <tr><td rowspan="5" style="font-weight:600;">Monitoring</td><td class="code">OP-M1</td><td>Monthly draw certification + inspecting engineer report</td></tr>
+        <tr><td class="code">OP-M2</td><td>Quarterly financial / rent-roll reporting</td></tr>
+        <tr><td class="code">OP-M3</td><td>Annual appraisal / property condition refresh</td></tr>
+        <tr><td class="code">OP-M4</td><td>Covenant testing (DSCR / Debt Yield) — trailing 12</td></tr>
+        <tr><td class="code">OP-M5</td><td>Lease rollover / rent-roll tracking</td></tr>
+
+        <tr><td rowspan="5" style="font-weight:600;">Risk / Workflow Status</td><td class="code">OP-S1</td><td>Performing</td></tr>
+        <tr><td class="code">OP-S2</td><td>Watchlist</td></tr>
+        <tr><td class="code">OP-S3</td><td>Covenant breach / cash management triggered</td></tr>
+        <tr><td class="code">OP-S4</td><td>Maturity / renewal pending</td></tr>
+        <tr><td class="code">OP-S5</td><td>Special servicing / workout</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ UNDERWRITING MEMO ============ -->
+  <section id="memo">
+    <div class="sheet-label"><span class="num">C-6.0</span> Underwriting Memo Template</div>
+    <div class="section-head">
+      <h2>Bank-ready structure, sized for property debt.</h2>
+      <p>Same skeleton a credit committee expects, with the financial-statement analysis section (B) replaced by property performance and the ratio section (D) replaced by DSCR/Debt Yield/leverage.</p>
+    </div>
+    <table class="data">
+      <thead><tr><th>Section</th><th>Contents</th></tr></thead>
+      <tbody>
+        <tr><td><b>A. Sponsor Overview</b></td><td>Entity structure (SPE/LLC), sponsor track record &amp; years developing/owning, principal net worth &amp; liquidity, prior lender relationships</td></tr>
+        <tr><td><b>B. Deal Overview</b></td><td>Asset type &amp; market, deal type (acquisition / refi / construction / bridge), amount requested, use of proceeds</td></tr>
+        <tr><td><b>C. Property Financials</b></td><td>T-12 / T-3 annualized actuals, stabilized pro forma — Revenue, OpEx, NOI by year</td></tr>
+        <tr><td><b>D. Cash Flow &amp; Coverage</b></td><td>DSCR (in-place and stressed +200bps), Debt Yield, breakeven occupancy</td></tr>
+        <tr><td><b>E. Valuation &amp; Leverage</b></td><td>Appraised value, going-in vs. exit cap rate, LTV, LTC / Yield-on-Cost for development</td></tr>
+        <tr><td><b>F. Collateral &amp; Title</b></td><td>Property description, title/survey status, environmental status, zoning/entitlement, condition</td></tr>
+        <tr><td><b>G. Capital Stack</b></td><td>Senior debt, mezz/pref equity, sponsor equity — sources &amp; uses, waterfall</td></tr>
+        <tr><td><b>H. Guarantor Strength</b></td><td>Net worth, liquidity, contingent liabilities, global cash flow across the guarantor's portfolio</td></tr>
+        <tr><td><b>I. Risk Analysis</b></td><td>Market/submarket risk, tenant concentration &amp; rollover, construction/completion risk, rate risk, sponsor risk — with mitigants</td></tr>
+        <tr><td><b>J. Recommendation</b></td><td>Approve / Refer / Decline, proposed structure, hold-code conditions list</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ DECISION ENGINE ============ -->
+  <section id="decision">
+    <div class="sheet-label"><span class="num">C-7.0</span> Decision Engine</div>
+    <div class="section-head">
+      <h2>The automatable thresholds behind the recommendation.</h2>
+    </div>
+    <div class="decision-band">
+      <div class="decision-col approve">
+        <h3><span class="badge approve">Approve</span></h3>
+        <ul>
+          <li>Stressed DSCR ≥ 1.25x (1.20x agency/affordable)</li>
+          <li>Debt Yield ≥ 9%</li>
+          <li>LTV / LTC within segment ceiling</li>
+          <li>Sponsor liquidity ≥ 10% of loan + 12 mo. debt service</li>
+          <li>Title, environmental, and zoning clear or resolvable pre-close</li>
+        </ul>
+      </div>
+      <div class="decision-col refer">
+        <h3><span class="badge refer">Refer</span></h3>
+        <ul>
+          <li>Stressed DSCR 1.10x – 1.25x</li>
+          <li>Debt Yield 7% – 9%</li>
+          <li>LTV/LTC above ceiling but within secondary-market range</li>
+          <li>Rollover, completion, or collateral gap needing a mitigant</li>
+        </ul>
+        <div class="note">Cure path: add reserve, reduce proceeds, require completion or carve-out guaranty, or layer mezz/pref to right-size the senior loan.</div>
+      </div>
+      <div class="decision-col decline">
+        <h3><span class="badge decline">Decline</span></h3>
+        <ul>
+          <li>Stressed DSCR &lt; 1.10x with no credible repayment source</li>
+          <li>LTV/LTC exceeds policy with no compensating strength</li>
+          <li>Unresolved environmental REC with no remediation path</li>
+          <li>Sponsor character, fraud, or title defect issue</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SYSTEM DESIGN ============ -->
+  <section id="system">
+    <div class="sheet-label"><span class="num">C-8.0</span> System Design — Commercial Mortgage Deal Engine</div>
+    <div class="section-head">
+      <h2>This is Phase B of what the Veritas Capital prototype already started.</h2>
+      <p>Phase A (built) tracks sources &amp; uses and a static lender matrix. Phase B turns that into a decision engine: the same property/deal inputs already being entered per-project run through the ratio engine, generate the hold-code conditions list automatically, and score-match against the live <b>Lender Matrix Pro</b> Notion database (C-1.5) by stage instead of requiring a manual read of each lender's fit.</p>
+    </div>
+    <div class="flow">
+      <div class="flow-col">
+        <div class="flow-lbl">Input</div>
+        <ul>
+          <li>Property financials (T-12, rent roll, pro forma)</li>
+          <li>Appraisal / comps</li>
+          <li>Deal structure &amp; capital stack (existing sources &amp; uses tool)</li>
+          <li>Sponsor / guarantor profile</li>
+        </ul>
+      </div>
+      <div class="flow-col">
+        <div class="flow-lbl">Processing</div>
+        <ul>
+          <li>Ratio engine (DSCR, Debt Yield, LTV/LTC, stressed DSCR)</li>
+          <li>Risk grading</li>
+          <li>Hold-code generation (auto-flag missing HF/HL/HC/HP items)</li>
+          <li>Lender-fit matching against the Lender Matrix, filtered by stage</li>
+        </ul>
+      </div>
+      <div class="flow-col">
+        <div class="flow-lbl">Output</div>
+        <ul>
+          <li>Approve / Refer / Decline</li>
+          <li>Suggested structure &amp; capital stack</li>
+          <li>Lender shortlist (Tier A first)</li>
+          <li>Conditions list (hold codes) + credit-narrative memo draft</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REGULATORY BASIS ============ -->
+  <section id="basis" style="border-bottom:none;">
+    <div class="sheet-label"><span class="num">C-9.0</span> Where This Framework Comes From</div>
+    <div class="section-head">
+      <h2>Public, defensible, US-specific — not a guess at a lender's internal codes.</h2>
+    </div>
+    <div class="risklist">
+      <div class="riskitem"><div class="rtitle">Interagency CRE Concentration Guidance</div><p>OCC / Federal Reserve / FDIC (2006, still governing): flags CRE concentration risk management when construction+land loans exceed 100% of capital, or total CRE exceeds 300% — the closest US analog to OSFI's principle-based approach.</p></div>
+      <div class="riskitem"><div class="rtitle">Agency multifamily guides</div><p>Fannie Mae Multifamily and Freddie Mac Multifamily seller/servicer guides publish DSCR/LTV underwriting grids by product — the public source for the 1.25x/1.20x DSCR and LTV bands used above.</p></div>
+      <div class="riskitem"><div class="rtitle">ASTM E1527 (Phase I ESA)</div><p>The industry-standard environmental due-diligence protocol referenced by every institutional lender's environmental hold code.</p></div>
+      <div class="riskitem"><div class="rtitle">ALTA/NSPS survey &amp; UCC Article 9</div><p>Title/survey standard and the US fixture-filing statute that replaces PPSA registration in this framework.</p></div>
+    </div>
+    <div class="disclaimer" style="margin-top:20px;">
+      <b>What's institution-specific vs. universal:</b> exact internal hold-code and op-code labels at any specific bank, agency shop, or debt fund are proprietary and not publicly standardized — the same caveat that applied to the original Canadian framework applies here. What's built above is the same kind of institution-agnostic system: close enough to how real lenders structure and monitor CRE debt to be useful for pre-qualifying a deal, prepping a submission package, and running the Lender Matrix — not a claim to have reverse-engineered any specific lender's actual codes. Verify every threshold against the specific term sheet before relying on it, and route security documents through counsel before execution.
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <div class="foot-row">
+      <div>Veritas Capital · Underwriting &amp; Deal Structuring Framework · Internal use</div>
+      <div>v1 — refactored for US commercial mortgage market, 8/30/26</div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  function scrollToSection(id){
+    const target = document.getElementById(id);
+    if(!target) return;
+    const nav = document.querySelector('.sheetnav');
+    const banner = document.querySelector('.proto-banner');
+    const offset = (nav ? nav.offsetHeight : 0) + (banner ? banner.offsetHeight : 0) + 16;
+    const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+  document.querySelectorAll('[data-scroll]').forEach(el => {
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      scrollToSection(this.dataset.scroll);
+    });
+  });
+
+  const navLinks = document.querySelectorAll('.sheetnav a[data-scroll]');
+  const sections = Array.from(navLinks).map(a => document.getElementById(a.dataset.scroll));
+  function updateNav(){
+    let idx = 0;
+    const scrollPos = window.scrollY + 140;
+    sections.forEach((sec, i) => { if(sec && sec.offsetTop <= scrollPos) idx = i; });
+    navLinks.forEach((a,i) => {
+      a.style.color = i===idx ? 'var(--ink)' : '';
+      a.style.borderBottomColor = i===idx ? 'var(--blue)' : 'transparent';
+    });
+  }
+  window.addEventListener('scroll', updateNav);
+  updateNav();
+</script>
+
+<!-- ============ DEAL QUALIFICATION ENGINE ============ -->
+<script>
+  // Tier A US lenders — mirrors C-1.5, pulled from Lender Matrix Pro (Notion) + live program-page search.
+  const TIER_A_LENDERS = [
+    {name:"ACORE Capital", tier:"A", stages:["Vertical Construction","Bridge / Lease-up"], assets:["Multifamily","Commercial"], min:30, max:300, recourse:"Case-by-case", geo:"U.S.", notes:"Institutional bridge/construction lender, large-loan focus.", url:"https://acorecapital.com/loan-parameters-landing-page"},
+    {name:"Anchor Loans", tier:"A", stages:["Vertical Construction","Bridge / Lease-up","Stabilized / Permanent"], assets:["Multifamily","SFR / BTR"], min:null, max:20, recourse:"Unknown/Verify", geo:"U.S.", notes:"SFR/BTR-focused private lender.", url:"https://www.anchorloans.com/faqs"},
+    {name:"Arbor Realty Trust", tier:"A", stages:["Bridge / Lease-up"], assets:["Multifamily","Commercial"], min:10, max:100, recourse:"Case-by-case", geo:"U.S.", notes:"Agency-adjacent multifamily bridge lender.", url:"https://arbor.com/bridge/"},
+    {name:"Bloomfield Capital", tier:"A", stages:["Bridge / Lease-up"], assets:["Hospitality","Retail","Commercial"], min:3, max:30, recourse:"Case-by-case", geo:"U.S.", notes:"Middle-market bridge and preferred equity.", url:"https://bloomfieldcapital.com/equity"},
+    {name:"Builder Finance", tier:"A", stages:["Raw Land","Horizontal Development","Vertical Construction"], assets:["SFR / BTR","Land / Lots"], min:null, max:null, recourse:"Unknown/Verify", geo:"U.S.", notes:"Land and horizontal development specialist for SFR/BTR builders. Underwrites raw and agricultural-zoned land moving through entitlement/rezoning toward horizontal development.", url:"https://www.builderfinance.com/land"},
+    {name:"Enact Partners", tier:"A", stages:["Raw Land","Horizontal Development","Vertical Construction"], assets:["SFR / BTR","Land / Lots"], min:null, max:null, recourse:"Unknown/Verify", geo:"U.S.", notes:"Horizontal construction loans bridging entitled/rezoned land into vertical construction.", url:"https://enactpartners.com/how-horizontal-construction-loans-bridge-the-gap-from/"},
+    {name:"Kiavi", tier:"A", stages:["Vertical Construction","Bridge / Lease-up","Stabilized / Permanent"], assets:["SFR / BTR"], min:0.15, max:10, recourse:"Unknown/Verify", geo:"U.S.", notes:"SFR new-construction and infill lender.", url:"https://www.kiavi.com/loans/new-construction-infill"},
+    {name:"LendingOne", tier:"A", stages:["Vertical Construction","Bridge / Lease-up","Stabilized / Permanent"], assets:["SFR / BTR"], min:0.2, max:2, recourse:"Unknown/Verify", geo:"U.S.", notes:"Smaller-balance SFR new-construction loans.", url:"https://lendingone.com/loan-types/new-construction-loans"},
+    {name:"Lima One Capital", tier:"A", stages:["Vertical Construction","Bridge / Lease-up","Stabilized / Permanent"], assets:["Multifamily","SFR / BTR"], min:null, max:20, recourse:"Unknown/Verify", geo:"U.S.", notes:"Multifamily and SFR new-construction lender.", url:"https://www.limaone.com/new-construction-loans"},
+    {name:"Madison Realty Capital", tier:"A", stages:["Vertical Construction","Bridge / Lease-up"], assets:["Multifamily","Commercial"], min:null, max:null, recourse:"Case-by-case", geo:"U.S.", notes:"Institutional multifamily/commercial construction and bridge.", url:"https://www.madisonrealtycapital.com/financing"},
+    {name:"Parkview Financial", tier:"A", stages:["Vertical Construction","Bridge / Lease-up"], assets:["Multifamily","Industrial","Retail","Mixed-Use"], min:5, max:200, recourse:"Case-by-case", geo:"U.S.", notes:"Construction lender across multifamily/mixed-use.", url:"https://www.parkviewfinancial.com/lending"},
+    {name:"RCN Capital", tier:"A", stages:["Vertical Construction","Bridge / Lease-up","Stabilized / Permanent"], assets:["SFR / BTR"], min:0.1, max:2, recourse:"Unknown/Verify", geo:"U.S.", notes:"Smaller-balance SFR bridge/construction.", url:"https://rcncapital.com/loan-programs"},
+    {name:"Ready Capital", tier:"A", stages:["Raw Land","Horizontal Development","Vertical Construction","Bridge / Lease-up"], assets:["Multifamily","SFR / BTR","Industrial","Land / Lots","Commercial"], min:null, max:null, recourse:"Case-by-case", geo:"U.S.", notes:"Full-spectrum balance-sheet lender, land through construction, across multifamily/commercial/residential end uses.", url:"https://readycapital.com/loan-programs/commercial-real-estate/construction-loans/"},
+    {name:"Socotra Capital", tier:"A", stages:["Vertical Construction","Bridge / Lease-up"], assets:["Commercial"], min:0.1, max:20, recourse:"Unknown/Verify", geo:"U.S.", notes:"Private bridge lender, West Coast-weighted.", url:"https://www.socotracapital.com/loan-options/bridge-loans"},
+    {name:"Stormfield Capital", tier:"A", stages:["Bridge / Lease-up"], assets:["SFR / BTR","Commercial"], min:1, max:30, recourse:"Unknown/Verify", geo:"U.S.", notes:"Middle-market CRE bridge lender.", url:"https://stormfieldcapital.com/loan-programs/cre-product-overview"},
+    {name:"Thorofare Capital", tier:"A", stages:["Vertical Construction","Bridge / Lease-up"], assets:["Multifamily","Industrial","Retail","Hospitality","Office","Self Storage","Commercial"], min:15, max:100, recourse:"Case-by-case", geo:"U.S.", notes:"Institutional bridge/construction across most CRE asset classes.", url:"https://www.thorofarecapital.com/strategy"},
+    {name:"Tremont Realty Capital", tier:"A", stages:["Bridge / Lease-up"], assets:["Commercial"], min:null, max:null, recourse:"Case-by-case", geo:"U.S.", notes:"Commercial bridge lender.", url:"https://www.tremontcapital.com/home/default.aspx"},
+    {name:"Wilshire Quinn Capital", tier:"A", stages:["Bridge / Lease-up"], assets:["Commercial"], min:0.5, max:20, recourse:"Unknown/Verify", geo:"U.S.", notes:"Smaller-balance private bridge lender.", url:"https://wilshirequinn.com/bridge-loan-program"},
+    {name:"Yieldi", tier:"A", stages:["Vertical Construction","Bridge / Lease-up"], assets:["Commercial"], min:0.35, max:50, recourse:"Unknown/Verify", geo:"U.S.", notes:"Commercial bridge and construction lender.", url:"https://yieldi.com/hard-money-loan-programs/"}
+  ];
+
+  // Tier B / land-and-horizontal-development specialists — pulled for the C-1.6 search feature.
+  // Not included in the C-0 calculator's default Tier A matching; surfaced via the search bar and the
+  // "Include Tier B" toggle, and hardcoded into the scenario callout below the search box.
+  const TIER_B_LAND_LENDERS = [
+    {name:"Buchanan Street Partners", tier:"B", stages:["Raw Land","Horizontal Development","Vertical Construction"], assets:["Multifamily","Retail","Mixed-Use"], min:null, max:null, recourse:"Non-recourse (confirmed on land + vertical)", geo:"Western U.S.-focused — verify Missouri coverage", notes:"Research notes flag this as one of the only lenders confirmed non-recourse across both horizontal development AND vertical construction — fits agricultural or raw land moving through rezoning into commercial, residential, or multifamily use. Notes reference a theoretical fit for bridging Evermont Phase 1 site work into Phase 2/3 — worth a direct call.", url:"https://www.buchananstreet.com/lending"},
+    {name:"Builders Capital", tier:"B", stages:["Raw Land","Horizontal Development","Vertical Construction"], assets:["SFR / BTR","Land / Lots"], min:null, max:null, recourse:"Unknown/Verify", geo:"U.S.", notes:"AD&C All-in-One: acquisition, horizontal, and vertical in a single facility — the closest structural match to agricultural land needing rezoning and horizontal development ahead of vertical.", url:"https://www.builderscapital.com/product-overview"},
+    {name:"Kennedy Funding", tier:"B", stages:["Raw Land","Horizontal Development"], assets:["Land / Lots","Commercial"], min:null, max:null, recourse:"Unknown/Verify", geo:"U.S. & international", notes:"Raw and unentitled land specialist, including agricultural-zoned parcels awaiting rezoning; known for closing in days — useful for pre-rezoning acquisition bridges.", url:"https://www.kennedyfunding.com/"},
+    {name:"Trez Capital", tier:"B", stages:["Raw Land","Horizontal Development","Vertical Construction"], assets:["Multifamily","Mixed-Use","Commercial"], min:null, max:null, recourse:"Unknown/Verify", geo:"U.S. & Canada", notes:"Land, land servicing, and horizontal-to-vertical construction lending up to 85% LTC — spans rezoning-stage land through multifamily/commercial delivery.", url:"https://www.trezcapital.com/"}
+  ];
+
+  // Combined dataset for the C-1.6 search bar — every lender in the matrix, both tiers.
+  const ALL_LENDERS = TIER_A_LENDERS.concat(TIER_B_LAND_LENDERS);
+
+  function annualDebtService(principal, annualRatePct, years){
+    if(years<=0) return principal*(annualRatePct/100);
+    const r = (annualRatePct/100)/12;
+    const n = years*12;
+    const monthly = principal*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
+    return monthly*12;
+  }
+  const fmtMoney = v => '$'+Math.round(v).toLocaleString('en-US');
+  const fmtPct = v => v.toFixed(2)+'%';
+  const fmtX = v => v.toFixed(2)+'x';
+  function ratioCell(label, val, state){
+    return `<div class="ratio-cell"><div class="rlbl">${label}</div><div class="rval${state?' '+state:''}">${val}</div></div>`;
+  }
+
+  function runQualification(e){
+    if(e) e.preventDefault();
+    const form = document.getElementById('dealForm');
+    if(!form) return;
+    const stage = document.getElementById('stage').value;
+    const assetClass = document.getElementById('assetClass').value;
+    const loanAmt = parseFloat(document.getElementById('loanAmt').value)||0;
+    const projectCost = parseFloat(document.getElementById('projectCost').value)||0;
+    const propValue = parseFloat(document.getElementById('propValue').value)||0;
+    const noi = parseFloat(document.getElementById('noi').value)||0;
+    const rate = parseFloat(document.getElementById('rate').value)||0;
+    const amort = parseFloat(document.getElementById('amort').value)||0;
+    const liquidity = parseFloat(document.getElementById('liquidity').value)||0;
+    const recoursePref = document.getElementById('recoursePref').value;
+    const output = document.getElementById('calcOutput');
+
+    if(loanAmt<=0 || noi<=0 || rate<=0){
+      output.innerHTML = '<div class="result-card"><p class="calc-empty">Enter a positive loan amount, NOI, and interest rate to run the calculation.</p></div>';
+      return;
+    }
+
+    const ads = annualDebtService(loanAmt, rate, amort);
+    const stressedAds = annualDebtService(loanAmt, rate+2, amort);
+    const dscr = noi/ads;
+    const stressedDscr = noi/stressedAds;
+    const debtYield = (noi/loanAmt)*100;
+    const ltv = propValue>0 ? (loanAmt/propValue)*100 : null;
+    const ltc = projectCost>0 ? (loanAmt/projectCost)*100 : null;
+    const liquidityRatio = liquidity>0 ? (liquidity/loanAmt)*100 : null;
+    const monthsCovered = liquidity>0 ? liquidity/(ads/12) : null;
+
+    const dscrFloor = assetClass==='Multifamily' ? 1.20 : 1.25;
+    const isConstructionStage = ['Raw Land','Horizontal Development','Vertical Construction'].includes(stage);
+    const leverageValue = isConstructionStage ? ltc : ltv;
+    const leverageLabel = isConstructionStage ? 'LTC' : 'LTV';
+    const leverageCeiling = isConstructionStage ? 75 : 70;
+
+    let flags = [], failCount = 0, warnCount = 0;
+
+    if(stressedDscr < 1.10){ flags.push({level:'fail', text:`Stressed DSCR ${fmtX(stressedDscr)} is below the 1.10x decline floor — no credible repayment source at the underwriting rate.`}); failCount++; }
+    else if(stressedDscr < dscrFloor){ flags.push({level:'warn', text:`Stressed DSCR ${fmtX(stressedDscr)} is below the ${fmtX(dscrFloor)} approve floor — refer-range coverage.`}); warnCount++; }
+    else { flags.push({level:'pass', text:`Stressed DSCR ${fmtX(stressedDscr)} clears the ${fmtX(dscrFloor)} floor.`}); }
+
+    if(debtYield < 7){ flags.push({level:'fail', text:`Debt Yield ${fmtPct(debtYield)} is below 7% — thin cushion against cap-rate/refi risk.`}); failCount++; }
+    else if(debtYield < 9){ flags.push({level:'warn', text:`Debt Yield ${fmtPct(debtYield)} sits in the 7–9% refer range.`}); warnCount++; }
+    else { flags.push({level:'pass', text:`Debt Yield ${fmtPct(debtYield)} clears the 9% floor.`}); }
+
+    if(leverageValue!=null){
+      if(leverageValue > leverageCeiling+10){ flags.push({level:'fail', text:`${leverageLabel} ${fmtPct(leverageValue)} exceeds the ${leverageCeiling}% ceiling by more than 10 points.`}); failCount++; }
+      else if(leverageValue > leverageCeiling){ flags.push({level:'warn', text:`${leverageLabel} ${fmtPct(leverageValue)} is above the ${leverageCeiling}% ceiling — within secondary-market range.`}); warnCount++; }
+      else { flags.push({level:'pass', text:`${leverageLabel} ${fmtPct(leverageValue)} is within the ${leverageCeiling}% ceiling.`}); }
+    } else {
+      flags.push({level:'warn', text:`No ${isConstructionStage ? 'project cost' : 'appraised value'} entered — ${leverageLabel} could not be tested.`});
+    }
+
+    if(liquidityRatio!=null){
+      const belowFloor = liquidityRatio < 10 || (monthsCovered!=null && monthsCovered<12);
+      const monthsTxt = monthsCovered!=null ? monthsCovered.toFixed(1) : '—';
+      if(belowFloor){ flags.push({level:'warn', text:`Sponsor liquidity ${fmtPct(liquidityRatio)} of loan (~${monthsTxt} months of debt service) is below the 10% + 12-month guarantor floor.`}); warnCount++; }
+      else { flags.push({level:'pass', text:`Sponsor liquidity ${fmtPct(liquidityRatio)} of loan (~${monthsTxt} months of debt service) clears the guarantor floor.`}); }
+    }
+
+    let decision = 'approve';
+    if(failCount>0) decision='decline';
+    else if(warnCount>0) decision='refer';
+    const decisionCopy = {
+      approve:{label:'Approve', sub:'Clears every threshold in the C-7.0 decision engine.'},
+      refer:{label:'Refer', sub:'Structure change needed — see flags below for the cure path.'},
+      decline:{label:'Decline', sub:'At least one hard threshold failed outright.'}
+    };
+
+    const matches = TIER_A_LENDERS.filter(l => {
+      const stageOk = l.stages.includes(stage);
+      const assetOk = l.assets.includes(assetClass) || l.assets.includes('Commercial') || assetClass==='Commercial';
+      const loanM = loanAmt/1000000;
+      const minOk = l.min==null || loanM >= l.min*0.5;
+      const maxOk = l.max==null || loanM <= l.max*1.25;
+      const recourseOk = recoursePref!=='nonrecourse' || l.recourse==='Case-by-case';
+      return stageOk && assetOk && minOk && maxOk && recourseOk;
+    });
+
+    let html = '';
+    html += `<div class="result-card decision-badge ${decision}"><div class="dtext">${decisionCopy[decision].label}</div><div class="dsub">${decisionCopy[decision].sub}</div></div>`;
+
+    html += '<div class="result-card"><div class="ratio-readout">';
+    html += ratioCell('DSCR (note rate)', fmtX(dscr));
+    html += ratioCell('Stressed DSCR (+200bps)', fmtX(stressedDscr), stressedDscr>=dscrFloor?'pass':(stressedDscr>=1.10?'warn':'fail'));
+    html += ratioCell('Debt Yield', fmtPct(debtYield), debtYield>=9?'pass':(debtYield>=7?'warn':'fail'));
+    html += ratioCell(leverageLabel, leverageValue!=null?fmtPct(leverageValue):'—', leverageValue!=null?(leverageValue<=leverageCeiling?'pass':(leverageValue<=leverageCeiling+10?'warn':'fail')):'');
+    html += ratioCell('Annual Debt Service', fmtMoney(ads));
+    html += ratioCell('Sponsor Liquidity / Loan', liquidityRatio!=null?fmtPct(liquidityRatio):'—', liquidityRatio!=null?(liquidityRatio>=10?'pass':'warn'):'');
+    html += '</div></div>';
+
+    html += '<div class="result-card"><h3>Flags</h3><ul class="flag-list">';
+    flags.forEach(f=>{ html += `<li class="${f.level}">${f.text}</li>`; });
+    html += '</ul></div>';
+
+    html += `<div class="result-card"><h3>Matched Tier A lenders — ${stage} × ${assetClass}</h3>`;
+    if(matches.length===0){
+      html += '<p class="calc-empty">No Tier A match for this stage/asset combination — check the Tier B/C entries in Lender Matrix Pro (Notion), or the permanent/agency/SBA gaps flagged in C-1.0.</p>';
+    } else {
+      html += '<div class="match-list">';
+      matches.forEach(l=>{
+        const sizeTxt = (l.min!=null||l.max!=null) ? `$${l.min!=null?l.min+'M':'—'}–${l.max!=null?l.max+'M':'—'}` : 'Size unlisted';
+        html += `<div class="match-item"><div><div class="mname">${l.name}</div><div class="mmeta">${sizeTxt} · ${l.recourse}</div></div><a href="${l.url}" target="_blank" rel="noopener">Program →</a></div>`;
+      });
+      html += '</div>';
+    }
+    html += '</div>';
+
+    output.innerHTML = html;
+  }
+
+  const dealFormEl = document.getElementById('dealForm');
+  if(dealFormEl){
+    dealFormEl.addEventListener('submit', runQualification);
+    runQualification();
+  }
+</script>
+
+<!-- ============ LENDER SEARCH ENGINE ============ -->
+<script>
+  // Flattens one lender record into a single lowercase string to search against —
+  // name, tier, stages, assets, geography, and the Notion research notes all count as match text.
+  function lenderSearchText(l){
+    return [l.name, l.tier==='A'?'Tier A':'Tier B', l.stages.join(' '), l.assets.join(' '), l.recourse, l.geo, l.notes].join(' ').toLowerCase();
+  }
+
+  function renderLenderResults(list){
+    const resultsEl = document.getElementById('searchResults');
+    if(!resultsEl) return;
+    if(list.length===0){
+      resultsEl.innerHTML = '<p class="calc-empty">No matches — try fewer or broader terms (e.g. just "land" or "multifamily"), or check the "Include Tier B" box above.</p>';
+      return;
+    }
+    let html = '';
+    list.forEach(l=>{
+      const sizeTxt = (l.min!=null||l.max!=null) ? `$${l.min!=null?l.min+'M':'—'}–${l.max!=null?l.max+'M':'—'}` : 'Size unlisted';
+      const tierBadge = l.tier==='A' ? '<span class="badge approve">Tier A</span>' : '<span class="badge refer">Tier B</span>';
+      html += `<div class="match-item"><div><div class="mname">${l.name} ${tierBadge}</div><div class="mmeta">${l.stages.join(', ')} · ${l.assets.join(', ')} · ${sizeTxt} · ${l.geo}</div></div><a href="${l.url}" target="_blank" rel="noopener">Program →</a></div>`;
+    });
+    resultsEl.innerHTML = html;
+  }
+
+  function runLenderSearch(){
+    const input = document.getElementById('lenderSearch');
+    const includeTierB = document.getElementById('includeTierB');
+    if(!input) return;
+    const q = input.value.trim().toLowerCase();
+    const resultsEl = document.getElementById('searchResults');
+    if(!resultsEl) return;
+
+    if(q===''){
+      resultsEl.innerHTML = '';
+      return;
+    }
+
+    const terms = q.split(/\s+/).filter(Boolean);
+    const pool = (includeTierB && includeTierB.checked) ? ALL_LENDERS : TIER_A_LENDERS;
+    // Score every lender by how many query terms hit its text, rather than requiring every term to
+    // match — a multi-word scenario query (stage + rezoning + asset class) rarely finds one lender whose
+    // notes contain every word verbatim, so this surfaces and ranks the closest fits instead of returning
+    // nothing. A lender needs at least one term hit to appear at all.
+    const scored = pool.map(l=>{
+      const text = lenderSearchText(l);
+      const score = terms.reduce((n,t) => n + (text.includes(t) ? 1 : 0), 0);
+      return {l, score};
+    }).filter(s => s.score>0);
+    scored.sort((a,b) => b.score - a.score || a.l.name.localeCompare(b.l.name));
+    renderLenderResults(scored.map(s=>s.l));
+  }
+
+  const lenderSearchInput = document.getElementById('lenderSearch');
+  const includeTierBToggle = document.getElementById('includeTierB');
+  if(lenderSearchInput){
+    lenderSearchInput.addEventListener('input', runLenderSearch);
+    includeTierBToggle && includeTierBToggle.addEventListener('change', runLenderSearch);
+
+    document.querySelectorAll('.search-chips .chip').forEach(chip=>{
+      chip.addEventListener('click', function(){
+        lenderSearchInput.value = this.dataset.q || '';
+        // The land/rezoning/horizontal-dev chip is exactly the scenario Tier A alone can't answer well —
+        // switch the toggle on automatically so the chip's own promise (a fitting result) holds true.
+        if(this.dataset.q && this.dataset.q.includes('rezoning') && includeTierBToggle){
+          includeTierBToggle.checked = true;
+        }
+        runLenderSearch();
+        lenderSearchInput.focus();
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
