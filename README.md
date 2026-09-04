@@ -14,6 +14,11 @@
 - [Service Area](./profile/service-area.md) — Lee's Summit + KC metro
 - [Tagline & Positioning](./profile/tagline.md) — *"Built on Integrity. Driven by Excellence."*
 
+### 🧭 [Veritas Operating System](./docs/veritas-os/)
+- [Veritas OS Product Requirements](./docs/veritas-os/veritas-os-v0.1-prd.md) — governed agentic operating architecture
+- [Agency & Agents Architecture](./docs/veritas-os/agency-agents-architecture.md) — specialist roles and orchestration
+- [Marketing Engineer Revenue Compass](./docs/veritas-os/marketing-engineer-revenue-compass.md) — converts market, relationship, inbound, and capital signals into ranked revenue actions
+
 ### 🏗️ [Projects](./projects/)
 - [Prime Lee's Summit](./projects/prime-lees-summit/) — current capital-raise target
   - [Pitch Summary](./projects/prime-lees-summit/pitch-summary.md)
